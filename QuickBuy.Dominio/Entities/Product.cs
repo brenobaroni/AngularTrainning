@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using QuickBuy.Dominio.Entities;
 
 namespace QuickBuy.Domain.Entities
 {
-    public class Product
+    public class Product : Entitie
     {
         public int Id { get; set; }
 
@@ -13,5 +11,9 @@ namespace QuickBuy.Domain.Entities
         public string Description { get; set; }
 
         public decimal Price { get; set; }
+
+        public override void Validate()
+        {
+        }
     }
 }

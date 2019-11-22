@@ -1,6 +1,7 @@
 <body>
   <app-nav-menu></app-nav-menu>
   <div class="container">
+    <mat-progress-bar mode="indeterminate" *ngIf="IsWait"></mat-progress-bar>
     <router-outlet></router-outlet>
   </div>
 </body>

@@ -14,3 +14,12 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.loading {
+  align-items: center;
+
+}
+
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~@angular/material/theming';
+

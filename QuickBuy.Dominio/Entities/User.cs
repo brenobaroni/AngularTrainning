@@ -1,9 +1,6 @@
-﻿using QuickBuy.Domain.Entities;
-using System.Collections.Generic;
-
-namespace QuickBuy.Dominio.Entities
+﻿namespace QuickBuy.Dominio.Entities
 {
-    public class User
+    public class User : Entitie
     {
         public int Id { get; set; }
 
@@ -15,7 +12,8 @@ namespace QuickBuy.Dominio.Entities
 
         public string LastName { get; set; }
 
-
-
+        public override void Validate()
+        {
+        }
     }
 }

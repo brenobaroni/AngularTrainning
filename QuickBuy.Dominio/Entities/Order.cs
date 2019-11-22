@@ -1,12 +1,14 @@
 ﻿
 
 using QuickBuy.Domain.ValueObject;
+using QuickBuy.Dominio.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace QuickBuy.Domain.Entities
 {
-    public class Order
+    public class Order : Entitie
     {
         public int Id { get; set; }
 
@@ -18,7 +20,7 @@ namespace QuickBuy.Domain.Entities
 
         public int DeliveryAddressId { get; set; }
 
-        public int FormaPagamentoId { get; set; }
+        public int PaymentMetodId { get; set; }
 
         public PaymentMetod PaymentMetod { get; set; }
 
@@ -28,7 +30,20 @@ namespace QuickBuy.Domain.Entities
         /// </summary>
         public ICollection<OrderItem> OrderItens { get; set; }
 
+        public override void Validate()
+        {
+            if (!OrderItens.Any())
+            {
+                ClearMessageValidation();
+                AddWarning("Warning - Order item cannot be empty");
+            }
+
+            if(DeliveryAddressId == 0)
+            {
+                AddWarning("Warning - Not any Delivery address.")
+            }
 
 
+        }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using QuickBuy.Dominio.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace QuickBuy.Domain.Entities
 {
-    public class DeliveryAddress
+    public class DeliveryAddress : Entitie
     {
         public int Id { get; set; }
 
@@ -21,5 +22,10 @@ namespace QuickBuy.Domain.Entities
         public string City { get; set; }
 
         public string Country { get; set; }
+
+        public override void Validate()
+        {
+
+        }
     }
 }
