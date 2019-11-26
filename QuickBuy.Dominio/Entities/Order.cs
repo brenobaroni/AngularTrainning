@@ -1,7 +1,7 @@
 ﻿
 
 using QuickBuy.Domain.ValueObject;
-using QuickBuy.Dominio.Entities;
+using QuickBuy.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +40,7 @@ namespace QuickBuy.Domain.Entities
 
             if(DeliveryAddressId == 0)
             {
-                AddWarning("Warning - Not any Delivery address.")
+                AddWarning("Warning - Not any Delivery address.");
             }
 
 

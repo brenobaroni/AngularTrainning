@@ -1,4 +1,4 @@
-﻿using QuickBuy.Dominio.Entities;
+﻿using QuickBuy.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,7 +25,10 @@ namespace QuickBuy.Domain.Entities
 
         public override void Validate()
         {
-
+            if (string.IsNullOrEmpty(CEP))
+            {
+                AddWarning("Warning - CEP is empty");
+            }
         }
     }
 }

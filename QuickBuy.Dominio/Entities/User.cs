@@ -1,4 +1,4 @@
-﻿namespace QuickBuy.Dominio.Entities
+﻿namespace QuickBuy.Domain.Entities
 {
     public class User : Entitie
     {

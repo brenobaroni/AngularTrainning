@@ -1,4 +1,4 @@
-﻿using QuickBuy.Dominio.Entities;
+﻿using QuickBuy.Domain.Entities;
 
 namespace QuickBuy.Domain.Entities
 {
