@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuickBuy.Domain.Entities;
-using QuickBuy.Domain.Enumerable;
 using QuickBuy.Domain.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
+using QuickBuy.Repository.Config;
 
 namespace QuickBuy.Repository.Context
 {
@@ -23,6 +19,18 @@ namespace QuickBuy.Repository.Context
         public DbSet<OrderItem> OrderItens { get; set; }
         public DbSet<PaymentMetod> PaymentMetod { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new DeliveryAddressConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentMetodConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }
