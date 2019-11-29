@@ -22,14 +22,19 @@ namespace QuickBuy.Repository.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new DeliveryAddressConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
-            modelBuilder.ApplyConfiguration(new PaymentMetodConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
-
             base.OnModelCreating(modelBuilder);
+            /// Classes mapping
+
+            if (modelBuilder != null)
+            {
+                modelBuilder.ApplyConfiguration(new UserConfiguration());
+                modelBuilder.ApplyConfiguration(new OrderConfiguration());
+                modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+                modelBuilder.ApplyConfiguration(new PaymentMetodConfiguration());
+                modelBuilder.ApplyConfiguration(new ProductConfiguration());
+                modelBuilder.ApplyConfiguration(new DeliveryAddressConfiguration());
+            }
+
         }
 
     }
