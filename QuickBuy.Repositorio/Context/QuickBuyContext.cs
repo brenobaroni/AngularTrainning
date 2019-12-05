@@ -33,6 +33,28 @@ namespace QuickBuy.Repository.Context
                 modelBuilder.ApplyConfiguration(new PaymentMetodConfiguration());
                 modelBuilder.ApplyConfiguration(new ProductConfiguration());
                 modelBuilder.ApplyConfiguration(new DeliveryAddressConfiguration());
+
+                modelBuilder.Entity<PaymentMetod>().HasData(
+                    new PaymentMetod() { 
+                        Id = 1,
+                        Name = "Billet", 
+                        Description = "Billet Payment Type" 
+                    },
+                    new PaymentMetod()
+                    {
+                        Id = 2,
+                        Name = "Credit Card",
+                        Description = "Billet Payment Type"
+                    },
+                    new PaymentMetod()
+                    {
+                        Id = 3,
+                        Name = "Deposit",
+                        Description = "Billet Payment Type"
+                    }
+
+
+                );
             }
 
         }

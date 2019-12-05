@@ -14,14 +14,10 @@ namespace QuickBuy.Domain.Entities
 
         public string LastName { get; set; }
 
-        public List<DeliveryAddress> DeliveryAddresses { get; set; }
+        //# virtual to allow EFCore replace at runtime
+        public virtual ICollection<DeliveryAddress> DeliveryAddresses { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
-
-        public User()
-        {
-            DeliveryAddresses = new List<DeliveryAddress>();
-        }
+        public virtual ICollection<Order> Orders { get; set; }
 
         public override void Validate()
         {

@@ -27,8 +27,9 @@ namespace QuickBuy.Web
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("QuickBuyDB");
-            services.AddDbContext<QuickBuyContext>(options => 
-                                                        options.UseMySql(
+            services.AddDbContext<QuickBuyContext>(options =>
+                                                        options.UseLazyLoadingProxies()
+                                                        .UseMySql(
                                                         connectionString,
                                                         m => m.MigrationsAssembly("QuickBuy.Repository")
                                                    ));

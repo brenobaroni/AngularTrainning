@@ -33,36 +33,31 @@ namespace QuickBuy.Repository.Config
                 builder
                      .Property(user => user.Name)
                      .IsRequired()
-                     .HasMaxLength(50)
-                     .HasColumnType("nvarchar");
+                     .HasMaxLength(50);
 
                 //#LastName
                 builder
                      .Property(user => user.LastName)
                      .IsRequired()
-                     .HasMaxLength(50)
-                     .HasColumnType("nvarchar");
+                     .HasMaxLength(50);
 
                 //#LastName
                 builder
                      .Property(user => user.LastName)
                      .IsRequired()
-                     .HasMaxLength(50)
-                     .HasColumnType("nvarchar");
+                     .HasMaxLength(50);
 
-                ////# Orders
-                //builder
-                //    .Property(user => user.Orders);
+                //#Orders
+                builder
+                    .HasMany(u => u.Orders)
+                    .WithOne(p => p.User);
 
-                ////#DeliveryAddresses
-                //builder
-                //     .Property(user => user.DeliveryAddresses)
-                //     .IsRequired();
+                //#DeliveryAddress
+                builder
+                    .HasMany(u => u.DeliveryAddresses)
+                    .WithOne(d => d.User);
+
             }
-
-
-
-
         }
     }
 }
