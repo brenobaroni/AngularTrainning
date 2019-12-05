@@ -6,20 +6,24 @@ namespace QuickBuy.Repository.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
-                table: "PaymentMetod",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 1, "Billet Payment Type", "Billet" });
+            if (migrationBuilder != null)
+            {
 
-            migrationBuilder.InsertData(
-                table: "PaymentMetod",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 2, "Billet Payment Type", "Credit Card" });
+                migrationBuilder.InsertData(
+                    table: "PaymentMetod",
+                    columns: new[] { "Id", "Description", "Name" },
+                    values: new object[] { 1, "Billet Payment Type", "Billet" });
 
-            migrationBuilder.InsertData(
-                table: "PaymentMetod",
-                columns: new[] { "Id", "Description", "Name" },
-                values: new object[] { 3, "Billet Payment Type", "Deposit" });
+                migrationBuilder.InsertData(
+                    table: "PaymentMetod",
+                    columns: new[] { "Id", "Description", "Name" },
+                    values: new object[] { 2, "Billet Payment Type", "Credit Card" });
+
+                migrationBuilder.InsertData(
+                    table: "PaymentMetod",
+                    columns: new[] { "Id", "Description", "Name" },
+                    values: new object[] { 3, "Billet Payment Type", "Deposit" });
+            }
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
