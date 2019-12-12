@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuickBuy.Domain.Contracts;
 using QuickBuy.Repository.Context;
+using QuickBuy.Repository.Repository;
 
 namespace QuickBuy.Web
 {
@@ -33,6 +35,9 @@ namespace QuickBuy.Web
                                                         connectionString,
                                                         m => m.MigrationsAssembly("QuickBuy.Repository")
                                                    ));
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

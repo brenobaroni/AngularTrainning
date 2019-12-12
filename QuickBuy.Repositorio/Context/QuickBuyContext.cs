@@ -44,13 +44,13 @@ namespace QuickBuy.Repository.Context
                     {
                         Id = 2,
                         Name = "Credit Card",
-                        Description = "Billet Payment Type"
+                        Description = "Credit Card Payment Type"
                     },
                     new PaymentMetod()
                     {
                         Id = 3,
                         Name = "Deposit",
-                        Description = "Billet Payment Type"
+                        Description = "Deposit Payment Type"
                     }
 
 

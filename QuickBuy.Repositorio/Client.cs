@@ -8,7 +8,7 @@ namespace QuickBuy.Repository.Repository
     {
         public Client()
         {
-            var userRepository = new UserRepository();
+            //var userRepository = new UserRepository();
         }
     }
 }
