@@ -20,6 +20,6 @@ code {
 
 }
 
-@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
-@import '~@angular/material/theming';
-
+@import "~bootswatch/dist/lumen/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/lumen/bootswatch";

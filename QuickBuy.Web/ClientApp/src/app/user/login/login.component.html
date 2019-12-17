@@ -1,0 +1,60 @@
+<div class="text-center">
+  <form class="form-signin">
+
+    <h1 class="h4 mb-2 login">Login do Cliente</h1>
+
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email"
+           name="email"
+           id="inputEmail"
+           placeholder="Informe o seu Email"
+           class="form-control mb-2"
+           [(ngModel)]="user.email"
+           [ngClass]="{
+              'is-valid':email.valid && (email.dirty || email.touched),
+              'is-invalid':email.invalid && (email.dirty || email.touched)
+           }"
+           #email="ngModel"
+           email
+           required
+           />
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        Email is required
+      </div>
+      <div *ngIf="email.errors.email">
+        Insert a valid email
+      </div>
+    </div>
+
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password"
+           name="password"
+           id="inputPassword"
+           placeholder="Password"
+           class="form-control mb-2"
+           [(ngModel)]="user.password"
+           [ngClass]="{
+              'is-valid': password.valid && (password.dirty || password.touched),
+              'is-invalid': password.invalid && (password.dirty || password.touched)
+           }"
+           #password="ngModel"
+           min="5"
+           required
+           />
+    <div class="invalid-feedback mb-2" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div *ngIf="password.errors.required">
+        Password is required
+      </div>
+      <div *ngIf="password.errors.password">
+        Password is required
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" type="submit" (click)="enter()">Login</button>
+
+    <img [src]="enderecoImg" [title]="titulo"  />
+
+
+  </form>
+</div>
