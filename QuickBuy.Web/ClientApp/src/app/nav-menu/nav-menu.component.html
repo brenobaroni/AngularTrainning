@@ -34,9 +34,15 @@
             </a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!userAuthenticated()">
             <a class="nav-link text-dark" [routerLink]="['/login']">
               Login
+            </a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="userAuthenticated()">
+            <a class="nav-link text-dark" [routerLink]="['']" (click)="logOut()" >
+              Sair
             </a>
           </li>
 
