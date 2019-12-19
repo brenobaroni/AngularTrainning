@@ -53,6 +53,10 @@
 
     <button class="btn btn-primary btn-block mb-2" type="submit" (click)="enter()">Login</button>
 
+    <div class="alert alert-danger" *ngIf="msg">
+      {{msg}}
+    </div>
+
     <img [src]="enderecoImg" [title]="titulo"  />
 
 

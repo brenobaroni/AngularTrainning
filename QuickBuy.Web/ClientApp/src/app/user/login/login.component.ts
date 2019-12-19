@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public user;
   public returnUrl: string;
   public enderecoImg = "../assets/img/logo.png";
+  public msg: string;
 
   constructor(
     private router: Router,
@@ -21,18 +22,26 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
     this.user = new User();
+    this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
   }
 
   enter() {
 
     this.userService.checkUser(this.user).subscribe(
       data => {
+        var userReturn = data;
+        sessionStorage.setItem("user-authenticated", "1");
+        sessionStorage.setItem("email-usuario", userReturn.email);
 
+        if (this.returnUrl == null)
+          this.router.navigate(['/']);
+        else
+          this.router.navigate([this.returnUrl]);
       },
       err => {
-
+        console.log(err.error);
+        this.msg = err.error;
       }
     );
 
