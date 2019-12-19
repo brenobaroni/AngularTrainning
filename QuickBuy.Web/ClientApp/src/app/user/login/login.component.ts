@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "../../model/user";
 import { Router, ActivatedRoute } from "@angular/router"
+import { UserService } from "../../services/user/user.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
   public returnUrl: string;
   public enderecoImg = "../assets/img/logo.png";
 
-  constructor(private router: Router, private activatedRouter: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private activatedRouter: ActivatedRoute,
+    private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -22,10 +26,16 @@ export class LoginComponent implements OnInit {
   }
 
   enter() {
-    if (this.user.email == "breno_baroni@hotmail.com" && this.user.password == "123Senha") {
-      sessionStorage.setItem("user-authenticated", "1");
-      this.router.navigate([this.returnUrl]);
-    }
+
+    this.userService.checkUser(this.user).subscribe(
+      data => {
+
+      },
+      err => {
+
+      }
+    );
+
   }
 }
 

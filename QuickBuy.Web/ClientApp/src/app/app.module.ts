@@ -14,6 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './user/login/login.component';
 import { RouteGuard } from './authorization/route.guard';
+import { UserService } from './services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { RouteGuard } from './authorization/route.guard';
       { path: 'login', component: LoginComponent },
     ]),
   ],
-  providers: [],
+  providers: [UserService], //# All Services here.
   bootstrap: [AppComponent],
 })
 export class AppModule { }
