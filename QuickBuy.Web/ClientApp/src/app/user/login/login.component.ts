@@ -29,10 +29,8 @@ export class LoginComponent implements OnInit {
   enter() {
 
     this.userService.checkUser(this.user).subscribe(
-      data => {
-        var userReturn = data;
-        sessionStorage.setItem("user-authenticated", "1");
-        sessionStorage.setItem("email-usuario", userReturn.email);
+      user_json => { //provided by .net core;
+        this.userService.user = user_json;
 
         if (this.returnUrl == null)
           this.router.navigate(['/']);
