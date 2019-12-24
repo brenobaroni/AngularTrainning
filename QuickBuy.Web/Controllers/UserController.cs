@@ -22,7 +22,6 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
-
                 return Ok();
             }
             catch (Exception ex)
@@ -37,14 +36,11 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
-
-
                 return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
-
             }
         }
 
@@ -54,7 +50,7 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
-                User userRepository = _userRepository.GetById(1);
+                User userRepository = _userRepository.Get(user.Email, user.Password);
 
 
                 if(userRepository != null)

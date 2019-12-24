@@ -32,8 +32,6 @@ import { UserService } from './services/user/user.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
       { path: 'product', component: ProductComponent, canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
     ]),

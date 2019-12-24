@@ -8,12 +8,15 @@ import { UserService } from "../../services/user/user.service";
   styleUrls: ["./login.component.css"]
 })
 
+
+
 export class LoginComponent implements OnInit {
 
   public user;
   public returnUrl: string;
   public enderecoImg = "../assets/img/logo.png";
   public msg: string;
+  private activate_Spiner: boolean;
 
   constructor(
     private router: Router,
@@ -26,8 +29,16 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.activatedRouter.snapshot.queryParams['returnUrl'];
   }
 
-  enter() {
 
+
+
+  async enter() {
+    this.activate_Spiner = true;
+
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    await delay(5000);
     this.userService.checkUser(this.user).subscribe(
       user_json => { //provided by .net core;
         this.userService.user = user_json;
@@ -43,6 +54,7 @@ export class LoginComponent implements OnInit {
       }
     );
 
+    this.activate_Spiner = false;
   }
 }
 
