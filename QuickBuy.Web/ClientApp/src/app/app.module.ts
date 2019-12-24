@@ -8,8 +8,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './user/login/login.component';
@@ -21,8 +19,6 @@ import { UserService } from './services/user/user.service';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     ProductComponent,
     LoginComponent,
   ],
