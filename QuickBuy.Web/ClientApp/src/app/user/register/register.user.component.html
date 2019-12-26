@@ -1,7 +1,7 @@
 <div class="text-center">
   <form class="form-signin">
 
-    <h1 class="h4 mb-2 login">Login do Cliente</h1>
+    <h1 class="h4 mb-2 login">Registro de Novo Usuario</h1>
 
     <label for="inputEmail" class="sr-only">Email</label>
     <input type="email"
@@ -17,6 +17,8 @@
            #email="ngModel"
            email
            required />
+
+
     <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div *ngIf="email.errors.required">
         Email is required
@@ -31,7 +33,7 @@
            name="password"
            id="inputPassword"
            placeholder="Password"
-           class="form-control  mb-2"
+           class="form-control mb-2"
            [(ngModel)]="user.password"
            [ngClass]="{
               'is-valid': password.valid && (password.dirty || password.touched),
@@ -49,21 +51,40 @@
       </div>
     </div>
 
-    <div class="text-right">
-      <button class="btn btn-warning mb-2 mr-2" type="submit" [routerLink]='["/register-user"]' [disabled]="activate_Spiner">
-        Cadastrar-se
-      </button>
-      <button class="btn btn-primary mb-2" type="submit" (click)="enter()" [disabled]="activate_Spiner">
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activate_Spiner"></span>
-        Login
-      </button>
+    <label for="inputName" class="sr-only">Nome</label>
+    <input type="text"
+           name="name"
+           id="inputName"
+           placeholder="Informe seu Nome"
+           class="form-control mb-2"
+           [(ngModel)]="user.name"
+           [ngClass]="{
+              'is-valid':name.valid && (name.dirty || name.touched),
+              'is-invalid':name.invalid && (email.dirty || name.touched)
+           }"
+           #name="ngModel"
+           required />
+
+
+    <div class="invalid-feedback mb-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="email.errors.required">
+        Name is required
+      </div>
+      <div *ngIf="email.errors.email">
+        Insert a valid name
+      </div>
     </div>
+
+
+    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="enter()" [disabled]="activate_Spiner">
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activate_Spiner"></span>
+      Register
+    </button>
 
     <div class="alert alert-danger" *ngIf="msg">
       {{msg}}
     </div>
 
-    <img [src]="enderecoImg" [title]="titulo" />
 
 
   </form>

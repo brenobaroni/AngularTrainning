@@ -34,6 +34,7 @@
     <None Remove="ClientApp\src\app\services\product\product.service.ts" />
     <None Remove="ClientApp\src\app\services\user\user.service.ts" />
     <None Remove="ClientApp\src\app\user\login\login.component.ts" />
+    <None Remove="ClientApp\src\app\user\register\register.user.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,16 +48,13 @@
     <TypeScriptCompile Include="ClientApp\src\app\services\product\product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user\login\login.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\user\register\register.user.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\src\app\user\register\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

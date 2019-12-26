@@ -8,9 +8,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-
+import { RegisterUserComponent } from './user/register/register.user.component';
 import { ProductComponent } from './product/product.component';
 import { LoginComponent } from './user/login/login.component';
+
 import { RouteGuard } from './authorization/route.guard';
 import { UserService } from './services/user/user.service';
 
@@ -21,6 +22,7 @@ import { UserService } from './services/user/user.service';
     HomeComponent,
     ProductComponent,
     LoginComponent,
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +32,7 @@ import { UserService } from './services/user/user.service';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent, canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
+      { path: 'register-user', component: RegisterUserComponent },
     ]),
   ],
   providers: [UserService], //# All Services here.

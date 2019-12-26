@@ -47,6 +47,20 @@ export class UserService {
 
     return this.http.post<User>(this.baseURL + "api/user/checkUser", body, { headers })
   }
+
+
+  public registerUser(user: User): Observable<User>{
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+
+    var body = {
+      email: user.email,
+      password: user.password,
+      name: user.name,
+      lastName: user.lastName
+    }
+
+    return this.http.post<User>(this.baseURL + "api/user", body, { headers })
+  }
 }
 
 
