@@ -1,13 +1,14 @@
 <div class="text-center">
   <form class="form-signin">
 
-    <h1 class="h4 mb-2 login">Registro de Novo Usuario</h1>
+    <h1 class="h4 mb-2 login">Create Account</h1>
 
+    <!--Email-->
     <label for="inputEmail" class="sr-only">Email</label>
     <input type="email"
            name="email"
            id="inputEmail"
-           placeholder="Informe o seu Email"
+           placeholder="Email"
            class="form-control mb-2"
            [(ngModel)]="user.email"
            [ngClass]="{
@@ -28,7 +29,8 @@
       </div>
     </div>
 
-    <label for="inputPassword" class="sr-only">Senha</label>
+    <!--Password-->
+    <label for="inputPassword" class="sr-only">Password</label>
     <input type="password"
            name="password"
            id="inputPassword"
@@ -51,11 +53,13 @@
       </div>
     </div>
 
-    <label for="inputName" class="sr-only">Nome</label>
+
+    <!--Name-->
+    <label for="inputName" class="sr-only">Name</label>
     <input type="text"
            name="name"
            id="inputName"
-           placeholder="Informe seu Nome"
+           placeholder="Name"
            class="form-control mb-2"
            [(ngModel)]="user.name"
            [ngClass]="{
@@ -70,16 +74,43 @@
       <div *ngIf="email.errors.required">
         Name is required
       </div>
-      <div *ngIf="email.errors.email">
-        Insert a valid name
+    </div>
+
+
+    <!--LastName-->
+    <label for="inputLastName" class="sr-only">Last Name</label>
+    <input type="text"
+           name="lastName"
+           id="inputLastName"
+           placeholder="Last Name"
+           class="form-control mb-2"
+           [(ngModel)]="user.lastName"
+           [ngClass]="{
+              'is-valid':lastName.valid && (lastName.dirty || lastName.touched),
+              'is-invalid':lastName.invalid && (lastName.dirty || lastName.touched)
+           }"
+           #lastName="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+      <div *ngIf="lastName.errors.required">
+        Last Name is required
       </div>
     </div>
 
 
-    <button class="btn btn-primary btn-block mb-2" type="submit" (click)="enter()" [disabled]="activate_Spiner">
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activate_Spiner"></span>
-      Register
-    </button>
+    <!--Button-->
+    <div class="row">
+      <button class="col-auto mr-auto btn btn-danger mb-2 ml-3" [routerLink]='["/login"]'>
+        Cancel
+      </button>
+
+      <button class="col-auto btn btn-primary mb-2 mr-3" type="submit" (click)="registerUser()" [disabled]="activate_Spiner">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activate_Spiner"></span>
+        Register
+      </button>
+
+    </div>
 
     <div class="alert alert-danger" *ngIf="msg">
       {{msg}}

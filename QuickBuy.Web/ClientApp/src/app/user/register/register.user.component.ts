@@ -22,10 +22,11 @@ export class RegisterUserComponent implements OnInit {
   }
 
   public registerUser() {
-    this.userService.registerUser(this.user).subscribe(
-      userJson => { },
-      err => { }
-    );
+    alert(' Email: ' + this.user.email + ' Password: ' + this.user.password + ' Name: ' + this.user.name + ' LastName: ' + this.user.lastName )
+    //this.userService.registerUser(this.user).subscribe(
+    //  userJson => { },
+    //  err => { }
+    //);
   }
 
 }
