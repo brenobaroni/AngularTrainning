@@ -11,7 +11,7 @@ namespace QuickBuy.Repository.Config
         {
             if(builder != null)
             {
-                //#Builder Parão Fluent
+                //#Builder Pardão Fluent
 
                 //#Id
                 builder
@@ -32,12 +32,6 @@ namespace QuickBuy.Repository.Config
                 //#Name
                 builder
                      .Property(user => user.Name)
-                     .IsRequired()
-                     .HasMaxLength(50);
-
-                //#LastName
-                builder
-                     .Property(user => user.LastName)
                      .IsRequired()
                      .HasMaxLength(50);
 

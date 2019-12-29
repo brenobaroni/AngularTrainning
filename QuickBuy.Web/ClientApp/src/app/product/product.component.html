@@ -67,7 +67,7 @@
 
 <div class="input-group mb-3">
   <div class="custom-file col-md-4">
-    <input type="file" class="custom-file-input " id="inputFile" aria-describedby="inputGroupFileAddon03">
+    <input type="file" class="custom-file-input " id="inputFile" aria-describedby="inputFile" (change)="inputChange($event.target.files)">
     <label class="custom-file-label" for="inputFile">Choose file...</label>
   </div>
 </div>

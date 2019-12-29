@@ -42,9 +42,10 @@ export class LoginComponent implements OnInit {
     this.userService.checkUser(this.user).subscribe(
       user_json => { //provided by .net core;
         this.userService.user = user_json;
-
+        console.log(user_json)
         if (this.returnUrl == null)
           this.router.navigate(['/']);
+          
         else
           this.router.navigate([this.returnUrl]);
       },

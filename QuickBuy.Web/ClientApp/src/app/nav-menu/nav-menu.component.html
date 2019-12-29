@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+  <nav class="navbar nav navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">QuickBuy</a>
       <button class="navbar-toggler"
@@ -32,11 +32,25 @@
             </a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="userAuthenticated()">
-            <a class="nav-link text-dark" [routerLink]="['']" (click)="logOut()" >
-              Sair
-            </a>
+          <li class="btn-group" *ngIf="userAuthenticated()">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Hi, {{ user.name }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">MyAccount</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/logOut']" (click)="logOut()">LogOut</a>
+            </div>
           </li>
+
+          <!--<li class="nav-item dropdown" *ngIf="userAuthenticated()">
+            <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" id="linkMenu" data-toggle="dropdown">{{ user.name }}</a>
+
+            <ul class="dropdown-menu" aria-labelledby="linkMenu">
+
+              <li class="dropdown-item" role="menu" [routerLink]="['/logOut']" (click)="logOut()"></li>
+            </ul>
+          </li>-->
 
         </ul>
       </div>

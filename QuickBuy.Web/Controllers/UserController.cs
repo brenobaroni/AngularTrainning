@@ -3,6 +3,7 @@ using QuickBuy.Domain.Contracts;
 using QuickBuy.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace QuickBuy.Web.Controllers
         [HttpGet]
         public ActionResult Get()
         {
+            
             try
             {
                 return Ok();
@@ -32,10 +34,21 @@ namespace QuickBuy.Web.Controllers
 
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post([FromBody] User user)
         {
+
             try
             {
+                var userRegistred = _userRepository.Get(user.Email);
+
+                if(userRegistred != null)
+                {
+                    return BadRequest("User with this email is alredy registred");
+                }
+
+                _userRepository.Add(user);
+
+
                 return Ok();
             }
             catch (Exception ex)
@@ -54,7 +67,7 @@ namespace QuickBuy.Web.Controllers
 
 
                 if(userRepository != null)
-                    return Ok(user);
+                    return Ok(userRepository);
 
                 return BadRequest("Usuário ou senha inválido.");
             }

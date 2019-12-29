@@ -32,6 +32,11 @@ export class UserService {
     this._user = null;
   }
 
+
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
+
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.baseURL = baseUrl;
   }
@@ -40,26 +45,12 @@ export class UserService {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
 
-    var body = {
-      email: user.email,
-      password: user.password
-    }
-
-    return this.http.post<User>(this.baseURL + "api/user/checkUser", body, { headers })
+    return this.http.post<User>(this.baseURL + "api/user/checkUser", JSON.stringify(user), { headers: this.headers })
   }
 
 
   public registerUser(user: User): Observable<User>{
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-
-    var body = {
-      email: user.email,
-      password: user.password,
-      name: user.name,
-      lastName: user.lastName
-    }
-
-    return this.http.post<User>(this.baseURL + "api/user", body, { headers })
+    return this.http.post<User>(this.baseURL + "api/user", JSON.stringify(user), { headers: this.headers })
   }
 }
 

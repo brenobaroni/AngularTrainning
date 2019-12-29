@@ -101,8 +101,8 @@
 
     <!--Button-->
     <div class="row">
-      <button class="col-auto mr-auto btn btn-danger mb-2 ml-3" [routerLink]='["/login"]'>
-        Cancel
+      <button class="col-auto mr-auto btn btn-danger mb-2 ml-3" [disabled]="disable_CancelBtn" [routerLink]='["/login"]'>
+        Back
       </button>
 
       <button class="col-auto btn btn-primary mb-2 mr-3" type="submit" (click)="registerUser()" [disabled]="activate_Spiner">
@@ -114,6 +114,10 @@
 
     <div class="alert alert-danger" *ngIf="msg">
       {{msg}}
+    </div>
+
+    <div class="alert alert-success" *ngIf="userRegistred">
+      User registred succesful. <a class="alert-link" [routerLink]='["/login"]'>Click here to login</a>
     </div>
 
 
