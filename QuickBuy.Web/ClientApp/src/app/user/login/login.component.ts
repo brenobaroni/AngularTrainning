@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     function delay(ms: number) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-    await delay(5000);
+    await delay(1500)
     this.userService.checkUser(this.user).subscribe(
       user_json => { //provided by .net core;
         this.userService.user = user_json;

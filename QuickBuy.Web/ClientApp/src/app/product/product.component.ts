@@ -1,4 +1,6 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
+import { Product } from "../model/product";
+import { ProductService } from "../services/product/product.service";
 
 @Component({
   selector: "app-product",
@@ -6,12 +8,25 @@ import { Component } from "@angular/core"
   styleUrls: ["./product.component.css"]
 })
 
-export class ProductComponent {
+export class ProductComponent implements OnInit {
+  public product: Product
 
-  public name: string;
-  public releasedForSale: boolean;
+  constructor(private productService: ProductService) {
 
-  public getName(): string {
-    return "Samsung";
+  }
+
+  ngOnInit(): void {
+    this.product = new Product;
+  }
+
+  public register() {
+    this.productService.register(this.product).subscribe(
+      productJson => {
+        console.log(productJson);
+      },
+      err => {
+        console.log(err.error);
+      }
+    )
   }
 }

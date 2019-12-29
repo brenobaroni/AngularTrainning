@@ -1,10 +1,78 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<h1 class="h4 tittle">Register New Product</h1>
 
-</body>
-</html>
+<!--Name-->
+<label for="inputName" class="sr-only">Name</label>
+<input type="text"
+       id="inputName"
+       class="form-control col-md-4 mb-2"
+       name="productName"
+       placeholder="Product Name"
+       [(ngModel)]="product.name"
+       [ngClass]="{
+              'is-valid':name.valid && (name.dirty || name.touched),
+              'is-invalid':name.invalid && (name.dirty || name.touched)
+           }"
+       #name="ngModel"
+       required />
+
+<div class="invalid-feedback mb-2" *ngIf="name.invalid && (name.dirty || name.touched)">
+  <div *ngIf="name.errors.required">
+    Name is required
+  </div>
+</div>
+
+
+<!--Description-->
+<label for="inputDescription" class="sr-only">Description</label>
+<input type="text"
+       id="inputDescription"
+       class="form-control col-md-4 mb-2"
+       name="productDescription"
+       placeholder="Product Description"
+       [(ngModel)]="product.description"
+       [ngClass]="{
+              'is-valid':description.valid && (description.dirty || description.touched),
+              'is-invalid':description.invalid && (description.dirty || description.touched)
+           }"
+       #description="ngModel"
+       required />
+
+<div class="invalid-feedback mb-2" *ngIf="description.invalid && (description.dirty || description.touched)">
+  <div *ngIf="name.errors.required">
+    Description is required
+  </div>
+</div>
+
+
+<!--Price-->
+<label for="inputPrice" class="sr-only">Price</label>
+<input type="number"
+       id="inputPrice"
+       class="form-control col-md-2 mb-2"
+       name="productPrice"
+       placeholder="Price"
+       [(ngModel)]="product.price"
+       [ngClass]="{
+              'is-valid':price.valid && (price.dirty || price.touched),
+              'is-invalid':price.invalid && (description.dirty || price.touched)
+           }"
+       #price="ngModel"
+       required />
+
+<div class="invalid-feedback mb-2" *ngIf="price.invalid && (price.dirty || price.touched)">
+  <div *ngIf="price.errors.required">
+    Price is required
+  </div>
+</div>
+
+<div class="input-group mb-3">
+  <div class="custom-file col-md-4">
+    <input type="file" class="custom-file-input " id="inputFile" aria-describedby="inputGroupFileAddon03">
+    <label class="custom-file-label" for="inputFile">Choose file...</label>
+  </div>
+</div>
+
+
+<button class="btn btn-primary" (click)="register()">
+  Save
+</button>

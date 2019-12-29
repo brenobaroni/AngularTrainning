@@ -14,6 +14,7 @@ import { LoginComponent } from './user/login/login.component';
 
 import { RouteGuard } from './authorization/route.guard';
 import { UserService } from './services/user/user.service';
+import { ProductService } from './services/product/product.service';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,12 @@ import { UserService } from './services/user/user.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'product', component: ProductComponent, canActivate: [RouteGuard] },
+      { path: 'product', component: ProductComponent }, // canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register-user', component: RegisterUserComponent },
     ]),
   ],
-  providers: [UserService], //# All Services here.
+  providers: [UserService, ProductService], //# All Services here.
   bootstrap: [AppComponent],
 })
 export class AppModule { }
