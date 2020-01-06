@@ -12,8 +12,18 @@ namespace QuickBuy.Domain.Entities
 
         public decimal Price { get; set; }
 
+        public string ArchiveName { get; set; }
+
         public override void Validate()
         {
+            if (string.IsNullOrEmpty(Name))
+                AddWarning("<p><b>Product Name</b> is required</p>");
+
+            if (string.IsNullOrEmpty(Description))
+                AddWarning("<p><b>Product Description</b> is required</p>");
+
+            if (Price <= 0)
+                AddWarning("<p><b>Price</b> is required</p>");
         }
     }
 }

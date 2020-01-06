@@ -15,6 +15,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RouteGuard } from './authorization/route.guard';
 import { UserService } from './services/user/user.service';
 import { ProductService } from './services/product/product.service';
+import { SearchProductComponent } from './product/search/search.product.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProductService } from './services/product/product.service';
     ProductComponent,
     LoginComponent,
     RegisterUserComponent,
+    SearchProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,6 +36,7 @@ import { ProductService } from './services/product/product.service';
       { path: 'product', component: ProductComponent }, // canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register-user', component: RegisterUserComponent },
+      { path: 'search-product', component: SearchProductComponent},
     ]),
   ],
   providers: [UserService, ProductService], //# All Services here.

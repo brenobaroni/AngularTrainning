@@ -25,8 +25,8 @@ namespace QuickBuy.Repository.Config
 
                 builder
                     .Property(p => p.Price)
+                    .HasColumnType("decimal(19,4)")
                     .IsRequired();
-
 
             }
 

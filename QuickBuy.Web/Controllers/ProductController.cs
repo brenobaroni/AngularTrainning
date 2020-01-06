@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Domain.Contracts;
 using QuickBuy.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +15,14 @@ namespace QuickBuy.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private IHttpContextAccessor _httpContextAccessor;
+        private IWebHostEnvironment _webHostEnviroment;
+
+        public ProductController(IProductRepository productRepository, IHttpContextAccessor httpContextAccessor, IWebHostEnvironment webHostEnvironment)
         {
             _productRepository = productRepository;
+            _httpContextAccessor = httpContextAccessor;
+            _webHostEnviroment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -22,7 +30,7 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
-                return Ok(_productRepository.GetAll());
+                return Json(_productRepository.GetAll());
             }
             catch (Exception ex)
             {
@@ -34,6 +42,11 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
+                //Validation for product
+                product.Validate();
+                if (!product.IsValid)
+                    return BadRequest(product.GetMessageValidation());
+
                 _productRepository.Add(product);
                 return Created("api/product", product);
             }
@@ -42,5 +55,48 @@ namespace QuickBuy.Web.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("SendArchive")]
+        public IActionResult SendArchive()
+        {
+            try
+            {
+                IFormFile formFile = _httpContextAccessor.HttpContext.Request.Form.Files["selectedArchive"];
+                string archiveName = formFile.FileName;
+                string ext = archiveName.Split('.').Last();
+                string newArchiveName = CreateNewArchiveName(archiveName, ext);
+                string archivesPath = _webHostEnviroment.WebRootPath + "\\archive\\";
+                string completeName = archivesPath + newArchiveName;
+
+                using (var streamArchive = new FileStream(completeName, FileMode.Create))
+                {
+                    formFile.CopyTo(streamArchive);
+                }
+
+
+                return Json(newArchiveName);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        private static string CreateNewArchiveName(string archiveName, string ext)
+        {
+            char[] arrayNameRipped = Path.GetFileNameWithoutExtension(archiveName).Take(10).ToArray();
+            string newArchiveName = new string(arrayNameRipped).Replace(" ", "-");
+            newArchiveName = $"{newArchiveName}_{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}.{ext}";
+            return newArchiveName;
+        }
+
+
+
+
+
+
+
     }
 }

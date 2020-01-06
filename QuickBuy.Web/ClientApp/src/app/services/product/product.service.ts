@@ -24,7 +24,7 @@ export class ProductService implements OnInit {
   }
 
   public register(product: Product): Observable<Product> {
-    return this.http.post<Product>(this._baseUrl + "api/product/register", JSON.stringify(product), { headers: this.headers });
+    return this.http.post<Product>(this._baseUrl + "api/product", JSON.stringify(product), { headers: this.headers });
   }
 
   public save(product: Product): Observable<Product> {
@@ -42,10 +42,10 @@ export class ProductService implements OnInit {
   public getProduct(productId: number): Observable<Product> {
     return this.http.get<Product>(this._baseUrl + "api/product");
   }
-  public sendArchive(selectedFile: File): Observable<boolean> {
+  public sendArchive(selectedFile: File): Observable<string> {
     const formData: FormData = new FormData();
     formData.append("selectedArchive", selectedFile, selectedFile.name);
-    return this.http.post<boolean>(this._baseUrl + "api/product/sendArchive", formData);
+    return this.http.post<string>(this._baseUrl + "api/product/sendArchive", formData);
   }
 
 }
