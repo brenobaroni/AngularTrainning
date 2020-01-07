@@ -33,4 +33,23 @@ export class SearchProductComponent implements OnInit {
     this.router.navigate(['/product'])
   }
 
+  deleteProduct(product: Product) {
+    var confirmation = confirm("Confirm Delete?")
+    if (confirmation) {
+      this.productService.delete(product).subscribe(
+        products => {
+          this.products = products;
+        },
+        err => {
+          console.log(err.errors)
+        }
+      )
+    }
+  }
+  90
+  editProduc(product: Product) {
+    sessionStorage.setItem('productSession', JSON.stringify(product))
+    this.router.navigate(['/product'])
+  }
+
 }

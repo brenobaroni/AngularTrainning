@@ -38,6 +38,7 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
+        [HttpPost]
         public IActionResult Post([FromBody]Product product)
         {
             try
@@ -47,12 +48,35 @@ namespace QuickBuy.Web.Controllers
                 if (!product.IsValid)
                     return BadRequest(product.GetMessageValidation());
 
-                _productRepository.Add(product);
+                //#if productId > 0, the product already exists so it will be an update.
+                if (product.Id > 0)
+                {
+                    _productRepository.Update(product);
+                }
+                else
+                {
+                    _productRepository.Add(product);
+                }
+
                 return Created("api/product", product);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("Delete")]
+        public IActionResult Delete([FromBody] Product product)
+        {
+            try
+            {
+                _productRepository.Remove(product);
+                return Json(_productRepository.GetAll());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
             }
         }
 
