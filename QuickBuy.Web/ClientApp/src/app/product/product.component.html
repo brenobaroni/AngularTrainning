@@ -71,12 +71,16 @@
     <label class="custom-file-label" for="inputFile">Choose file...</label>
   </div>
 </div>
+<div class="form-inline">
+  <button class="btn btn-primary mr-2" (click)="register()" [disabled]="activate_spiner">
+    <span class="spinner-border spinner-border-sm" *ngIf="activate_spiner"></span>
+    Save
+  </button>
+  <button class="btn btn-secondary" [routerLink]="['/search-product']">Cancel</button>
+
+</div>
 
 
-<button class="btn btn-primary mb-2" (click)="register()" [disabled]="activate_spiner">
-  <span class="spinner-border spinner-border-sm" *ngIf="activate_spiner"></span>
-  Save
-</button>
 
 <div class="alert alert-danger col-sm-4" *ngIf="msg" [innerHTML]="msg">
 

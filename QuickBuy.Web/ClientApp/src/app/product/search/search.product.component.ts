@@ -47,7 +47,7 @@ export class SearchProductComponent implements OnInit {
     }
   }
   90
-  editProduc(product: Product) {
+  editProduct(product: Product) {
     sessionStorage.setItem('productSession', JSON.stringify(product))
     this.router.navigate(['/product'])
   }
