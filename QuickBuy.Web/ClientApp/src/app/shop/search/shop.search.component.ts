@@ -18,7 +18,14 @@ export class ShopSearchComponent implements OnInit {
   }
 
   constructor(private productService: ProductService) {
-
+    this.productService.getAll().subscribe(
+      products => {
+        this.products = products;
+      },
+      err => {
+        console.log(err.error)
+      }
+    )
   }
 
 }
