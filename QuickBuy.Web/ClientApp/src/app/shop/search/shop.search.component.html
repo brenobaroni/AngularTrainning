@@ -1,14 +1,24 @@
-<div class="container">
+<div *ngIf="!products">
+  <div class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="products">
   <div class="row">
     <div class="col-md-4 mb-2" *ngFor="let p of products">
-      <div class="card">
-        <img class="card-img-top" src="./archive/{{p.archiveName}}" style="width: 200px; height: 200px;" />
-        <div class="card-body">
-          <h5 class="card-title">{{p.name}}</h5>
-          <div class="card-text">{{p.description}}</div>
-          <h5>{{p.price}}</h5>
+      <a (click)="openProduct(p)" style="cursor:pointer;">
+        <div class="card">
+          <img class="card-img-top" src="./archive/{{p.archiveName}}" style="width: 200px; height: 200px;" />
+          <div class="card-body">
+            <h5 class="card-title">{{p.name}}</h5>
+            <div class="card-text">{{p.description | truncate: 40}}</div>
+            <h5><b class="mr-3">Price</b>R$ {{p.price}}</h5>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

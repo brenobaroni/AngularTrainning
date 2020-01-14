@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { TruncateModule } from 'ng2-truncate'
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -17,6 +18,8 @@ import { UserService } from './services/user/user.service';
 import { ProductService } from './services/product/product.service';
 import { SearchProductComponent } from './product/search/search.product.component';
 import { ShopSearchComponent } from './shop/search/shop.search.component';
+import { ShopProductComponent } from './shop/product/shop.product.component';
+import { ShopMakePurshase } from './shop/makePurchase/shop.makePurshase.component';
 
 @NgModule({
   declarations: [
@@ -28,17 +31,22 @@ import { ShopSearchComponent } from './shop/search/shop.search.component';
     RegisterUserComponent,
     SearchProductComponent,
     ShopSearchComponent,
+    ShopProductComponent,
+    ShopMakePurshase,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    TruncateModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent }, // canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register-user', component: RegisterUserComponent },
       { path: 'search-product', component: SearchProductComponent },
+      { path: 'shop-product', component: ShopProductComponent },
+      { path: 'shop-makePurshase', component: ShopMakePurshase},
       //{ path: 'app-shop', component: ShopSearchComponent},
     ]),
   ],

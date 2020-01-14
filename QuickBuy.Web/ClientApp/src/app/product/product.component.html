@@ -35,11 +35,15 @@
               'is-invalid':description.invalid && (description.dirty || description.touched)
            }"
        #description="ngModel"
-       required />
+       required
+       minlength="50"/>
 
 <div class="invalid-feedback mb-2" *ngIf="description.invalid && (description.dirty || description.touched)">
-  <div *ngIf="name.errors.required">
+  <div *ngIf="description.errors.required">
     Description is required
+  </div>
+  <div *ngIf="description.errors.minlength">
+    Min 50 characteres.
   </div>
 </div>
 
@@ -71,7 +75,7 @@
     <label class="custom-file-label" for="inputFile">Choose file...</label>
   </div>
 </div>
-<div class="form-inline">
+<div class="form-inline mb-3">
   <button class="btn btn-primary mr-2" (click)="register()" [disabled]="activate_spiner">
     <span class="spinner-border spinner-border-sm" *ngIf="activate_spiner"></span>
     Save
@@ -83,5 +87,4 @@
 
 
 <div class="alert alert-danger col-sm-4" *ngIf="msg" [innerHTML]="msg">
-
 </div>

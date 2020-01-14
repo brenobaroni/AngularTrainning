@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { ProductService } from "../../services/product/product.service";
 import { Product } from "../../model/product";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-shop",
@@ -17,7 +18,7 @@ export class ShopSearchComponent implements OnInit {
         
   }
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private router: Router) {
     this.productService.getAll().subscribe(
       products => {
         this.products = products;
@@ -27,5 +28,11 @@ export class ShopSearchComponent implements OnInit {
       }
     )
   }
+
+  public openProduct(product: Product) {
+    sessionStorage.setItem('productDetails', JSON.stringify(product));
+    this.router.navigate(['shop-product']);
+  }
+
 
 }

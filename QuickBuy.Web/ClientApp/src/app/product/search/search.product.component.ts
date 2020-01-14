@@ -30,7 +30,8 @@ export class SearchProductComponent implements OnInit {
   }
 
   addProduct() {
-    this.router.navigate(['/product'])
+    sessionStorage.setItem('productSession', "");
+    this.router.navigate(['/product']);
   }
 
   deleteProduct(product: Product) {
@@ -46,10 +47,10 @@ export class SearchProductComponent implements OnInit {
       )
     }
   }
-  90
+  
   editProduct(product: Product) {
-    sessionStorage.setItem('productSession', JSON.stringify(product))
-    this.router.navigate(['/product'])
+    sessionStorage.setItem('productSession', JSON.stringify(product));
+    this.router.navigate(['/product']);
   }
 
 }
