@@ -1,3 +1,44 @@
-<div *ngFor="let p of products">
-  {{p.name}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <td>Product</td>
+            <td>Quantity</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products">
+            <td style="width:20%"><img src="./archive/{{p.archiveName}}" style="width: 60%; height: 5%;" /></td>
+            <td style="width:45%">{{p.description}}</td>
+            <td style="width:5%"><input class="form-control" value="{{quantity}}" min="1" style="width: 70px;" type="number" oninput="this.value = Math.abs(this.value)" (change)="updatePrice(p, $event.target.value, $event)" /></td>
+            <td style="width:30%">R$ {{p.price | number:'1.2'}}</td>----3
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="card" style="width:100%">
+          <div class="card-header">
+            Resume
+          </div>
+          <div class="card-body">
+            <table class="mb-3">
+              <tr>
+                <td style="width:60%"><strong>Total:</strong></td>
+                <td>R$ 1300,00</td>
+              </tr>
+            </table>
+            <div style=" width:100%">
+              <button class="btn btn-success">Make Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
