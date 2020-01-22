@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { ProductService } from "../../services/product/product.service";
+import { UserService } from "../../services/user/user.service";
 import { Product } from "../../model/product";
 import { Router } from "@angular/router";
 
@@ -15,10 +16,11 @@ export class ShopSearchComponent implements OnInit {
 
 
   ngOnInit(): void {
-        
+    
   }
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private userService: UserService) {  
+
     this.productService.getAll().subscribe(
       products => {
         this.products = products;

@@ -20,11 +20,12 @@
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
 
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="userIsAdmin()">
             <a class="nav-link text-dark" [routerLink]="['/search-product']">
               Product
             </a>
           </li>
+
 
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!userAuthenticated()">
             <a class="nav-link text-dark" [routerLink]="['/login']">
@@ -43,14 +44,20 @@
             </div>
           </li>
 
+
+          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="userAuthenticated()">
+            <a class="nav-link text-dark bb-icon-color" [routerLink]="['/shop-makePurshase']">
+              <fa-icon [icon]="faShoppingCart"></fa-icon> <b>Cart</b>
+            </a>
+          </li>
           <!--<li class="nav-item dropdown" *ngIf="userAuthenticated()">
-            <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" id="linkMenu" data-toggle="dropdown">{{ user.name }}</a>
+    <a class="nav-link dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false" id="linkMenu" data-toggle="dropdown">{{ user.name }}</a>
 
-            <ul class="dropdown-menu" aria-labelledby="linkMenu">
+    <ul class="dropdown-menu" aria-labelledby="linkMenu">
 
-              <li class="dropdown-item" role="menu" [routerLink]="['/logOut']" (click)="logOut()"></li>
-            </ul>
-          </li>-->
+      <li class="dropdown-item" role="menu" [routerLink]="['/logOut']" (click)="logOut()"></li>
+    </ul>
+  </li>-->
 
         </ul>
       </div>

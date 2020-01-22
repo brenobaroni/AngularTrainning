@@ -5,4 +5,6 @@ export class Product {
   price: number;
   archiveName: string;
   originalPrice: number;
+  quantity: number;
+
 }

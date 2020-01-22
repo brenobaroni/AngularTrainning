@@ -30,6 +30,10 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\authorization\route.guard.ts" />
+    <None Remove="ClientApp\src\app\deliveryAddress\register\register.deliveryAddress.component.ts" />
+    <None Remove="ClientApp\src\app\model\deliveryAddress.ts" />
+    <None Remove="ClientApp\src\app\model\order.ts" />
+    <None Remove="ClientApp\src\app\model\orderItem.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\product\product.component.ts" />
     <None Remove="ClientApp\src\app\product\search\search.product.component.ts" />
@@ -49,6 +53,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\authorization\route.guard.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\deliveryAddress\register\register.deliveryAddress.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\deliveryAddress.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\order.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\orderItem.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\search\search.product.component.ts" />

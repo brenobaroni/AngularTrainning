@@ -41,13 +41,16 @@ export class LoginComponent implements OnInit {
     await delay(1500)
     this.userService.checkUser(this.user).subscribe(
       user_json => { //provided by .net core;
+
         this.userService.user = user_json;
         console.log(user_json)
-        if (this.returnUrl == null)
+
+        if (this.returnUrl == null) {
           this.router.navigate(['/']);
-          
-        else
+        }
+        else {
           this.router.navigate([this.returnUrl]);
+        }
       },
       err => {
         console.log(err.error);

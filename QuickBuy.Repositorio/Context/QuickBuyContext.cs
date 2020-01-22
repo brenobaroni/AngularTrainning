@@ -15,7 +15,7 @@ namespace QuickBuy.Repository.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<DeliveryAddress> DeliveryAddress { get; set; }
+        public DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
         public DbSet<OrderItem> OrderItens { get; set; }
         public DbSet<PaymentMetod> PaymentMetod { get; set; }
 

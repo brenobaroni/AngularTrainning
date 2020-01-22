@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { Product } from "../../model/product"
 import { ProductService } from "../../services/product/product.service";
 import { Router } from "@angular/router";
+import { UserService } from "../../services/user/user.service";
 
 @Component({
   selector: "search-product",
@@ -18,7 +19,11 @@ export class SearchProductComponent implements OnInit {
 
   }
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, private userService: UserService) {
+    if (!this.userService.user_isAdmin()) {
+      this.router.navigate(['/']);
+    } 
+
     this.productService.getAll().subscribe(
       products => {
         this.products = products

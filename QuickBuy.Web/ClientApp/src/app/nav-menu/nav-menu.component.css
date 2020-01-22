@@ -16,3 +16,16 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.bb-icon-color fa-icon{
+    color: #0094ff;
+    
+}
+
+.bb-icon-color fa-icon:hover{
+    color: #00ffff;
+}
+
+.bb-icon-color b:hover{
+    color:aqua;
+}

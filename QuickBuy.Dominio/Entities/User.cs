@@ -14,6 +14,8 @@ namespace QuickBuy.Domain.Entities
 
         public string LastName { get; set; }
 
+        public bool isAdm { get; set; }
+
         //# virtual to allow EFCore replace at runtime
         public virtual ICollection<DeliveryAddress> DeliveryAddresses { get; set; }
 

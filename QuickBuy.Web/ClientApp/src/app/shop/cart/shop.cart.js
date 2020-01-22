@@ -22,6 +22,24 @@ var ShopCart = /** @class */ (function () {
         }
     };
     ShopCart.prototype.removeProduct = function (product) {
+        var productLocalStorage = localStorage.getItem("productLocalStorage");
+        if (productLocalStorage) {
+            this.products = JSON.parse(productLocalStorage);
+            this.products = this.products.filter(function (p) { return p.id != product.id; });
+            localStorage.setItem("productLocalStorage", JSON.stringify(this.products));
+        }
+    };
+    ShopCart.prototype.update = function (products) {
+        localStorage.setItem("productLocalStorage", JSON.stringify(products));
+    };
+    ShopCart.prototype.AnyItensInShopCart = function () {
+        var itens = this.getProducts();
+        if (itens) {
+            return true;
+        }
+        else {
+            return false;
+        }
     };
     return ShopCart;
 }());

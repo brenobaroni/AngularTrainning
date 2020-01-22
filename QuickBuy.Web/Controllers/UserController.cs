@@ -46,6 +46,7 @@ namespace QuickBuy.Web.Controllers
                     return BadRequest("User with this email is alredy registred");
                 }
 
+                //user.isAdm = true;
                 _userRepository.Add(user);
 
 

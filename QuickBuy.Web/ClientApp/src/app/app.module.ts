@@ -20,6 +20,7 @@ import { SearchProductComponent } from './product/search/search.product.componen
 import { ShopSearchComponent } from './shop/search/shop.search.component';
 import { ShopProductComponent } from './shop/product/shop.product.component';
 import { ShopMakePurshase } from './shop/makePurchase/shop.makePurshase.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @NgModule({
   declarations: [
@@ -39,14 +40,15 @@ import { ShopMakePurshase } from './shop/makePurchase/shop.makePurshase.componen
     HttpClientModule,
     FormsModule,
     TruncateModule,
+    FontAwesomeModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'product', component: ProductComponent }, // canActivate: [RouteGuard] },
+      { path: 'product', component: ProductComponent, canActivate: [RouteGuard] }, // canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register-user', component: RegisterUserComponent },
-      { path: 'search-product', component: SearchProductComponent },
+      { path: 'search-product', component: SearchProductComponent, canActivate: [RouteGuard] },
       { path: 'shop-product', component: ShopProductComponent },
-      { path: 'shop-makePurshase', component: ShopMakePurshase},
+      { path: 'shop-makePurshase', component: ShopMakePurshase, canActivate: [RouteGuard] },
       //{ path: 'app-shop', component: ShopSearchComponent},
     ]),
   ],

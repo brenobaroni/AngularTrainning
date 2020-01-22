@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { Product } from "../model/product";
 import { ProductService } from "../services/product/product.service";
 import { Router } from "@angular/router";
+import { UserService } from "../services/user/user.service";
 
 @Component({
   selector: "app-product",
@@ -15,8 +16,10 @@ export class ProductComponent implements OnInit {
   public activate_spiner: boolean;
   public msg: string;
 
-  constructor(private productService: ProductService, private router: Router) {
-
+  constructor(private productService: ProductService, private router: Router, private userService: UserService) {
+    if (!this.userService.user_isAdmin()) {
+      this.router.navigate(['/']);
+    } 
   }
 
 
