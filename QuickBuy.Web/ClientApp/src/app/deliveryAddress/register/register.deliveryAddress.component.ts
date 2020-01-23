@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core"
 import { DeliveryAddress } from "../../model/deliveryAddress"
+import { faShippingFast } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: "register-deliveryAddress",
@@ -16,10 +17,11 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.deliveryAddress = new DeliveryAddress();
   }
 
   
-
+  //ICONS  
+  faShippingFast = faShippingFast;
 }
 

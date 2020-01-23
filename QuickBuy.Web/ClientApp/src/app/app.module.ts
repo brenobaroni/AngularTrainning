@@ -21,7 +21,10 @@ import { ShopSearchComponent } from './shop/search/shop.search.component';
 import { ShopProductComponent } from './shop/product/shop.product.component';
 import { ShopMakePurshase } from './shop/makePurchase/shop.makePurshase.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { RegisterDeliveryAddressComponent } from './deliveryAddress/register/register.deliveryAddress.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     ProductComponent,
     LoginComponent,
     RegisterUserComponent,
+    RegisterDeliveryAddressComponent,
     SearchProductComponent,
     ShopSearchComponent,
     ShopProductComponent,
@@ -41,11 +45,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
     FormsModule,
     TruncateModule,
     FontAwesomeModule,
+    NgxMaskModule.forRoot(options),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent, canActivate: [RouteGuard] }, // canActivate: [RouteGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'register-user', component: RegisterUserComponent },
+      { path: 'register-delivery-address', component: RegisterDeliveryAddressComponent},
       { path: 'search-product', component: SearchProductComponent, canActivate: [RouteGuard] },
       { path: 'shop-product', component: ShopProductComponent },
       { path: 'shop-makePurshase', component: ShopMakePurshase, canActivate: [RouteGuard] },

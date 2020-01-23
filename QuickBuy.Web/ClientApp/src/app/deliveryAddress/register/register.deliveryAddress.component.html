@@ -1,10 +1,38 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+<div class="text-center">
+  <form class="form-signin">
+    <h1 class="h4 mb-2"><fa-icon [icon]="faShippingFast"></fa-icon> Delivery Address Register</h1>
 
-</body>
-</html>
+    <!--CEP-->
+    <label for="inputCEP" class="sr-only">CEP</label>
+    <input type="text"
+           name="cep"
+           id="inputCEP"
+           placeholder="CEP *only numbers"
+           class="form-control mb-2"
+           [(ngModel)]="deliveryAddress.cep"
+           [ngClass]="{
+              'is-valid': cep.valid && (cep.dirty || cep.touched),
+              'is-invalid': cep.invalid && (cep.dirty || cep.tpuched)
+           }"
+           #cep="ngModel"
+           required
+           maxlength="9"
+           min="9"
+           size="8"
+           mask="00000-000"/>
+
+    <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)" >
+      <div *ngIf="cep.errors.required">
+        CEP is required
+      </div>
+      <div *ngIf="cep.errors.cep">
+
+      </div>
+    </div>
+
+
+
+
+
+  </form>
+</div>
