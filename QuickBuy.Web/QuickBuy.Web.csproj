@@ -37,6 +37,7 @@
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\product\product.component.ts" />
     <None Remove="ClientApp\src\app\product\search\search.product.component.ts" />
+    <None Remove="ClientApp\src\app\services\deliveryAddress\deliveryAddress.service.ts" />
     <None Remove="ClientApp\src\app\services\product\product.service.ts" />
     <None Remove="ClientApp\src\app\services\user\user.service.ts" />
     <None Remove="ClientApp\src\app\shop\cart\shop.cart.ts" />
@@ -60,6 +61,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\search\search.product.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\deliveryAddress\deliveryAddress.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\product\product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user\user.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shop\cart\shop.cart.ts" />

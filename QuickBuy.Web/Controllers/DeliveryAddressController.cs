@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuickBuy.Domain.Contracts;
 using QuickBuy.Domain.Entities;
+using QuickBuy.Repository.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,30 @@ namespace QuickBuy.Web.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet("GetByCep")]
+        public ActionResult GetByCep(string cep)
+        {
+            DeliveryAddressApi api = new DeliveryAddressApi();
+            try
+            {
+                Correios.consultaCEPResponse consulta = api.GetByCep(cep);
+
+                if (consulta != null)
+                {
+                    return Ok(Json(consulta.@return));
+                }
+                else
+                {
+                    return BadRequest("Faild to request address.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
 

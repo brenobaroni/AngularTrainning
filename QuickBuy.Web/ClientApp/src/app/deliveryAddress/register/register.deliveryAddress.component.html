@@ -1,33 +1,107 @@
+
 <div class="text-center">
   <form class="form-signin">
     <h1 class="h4 mb-2"><fa-icon [icon]="faShippingFast"></fa-icon> Delivery Address Register</h1>
 
-    <!--CEP-->
-    <label for="inputCEP" class="sr-only">CEP</label>
-    <input type="text"
-           name="cep"
-           id="inputCEP"
-           placeholder="CEP *only numbers"
-           class="form-control mb-2"
-           [(ngModel)]="deliveryAddress.cep"
-           [ngClass]="{
+    <div class="row">
+      <div class="col">
+        <!--CEP-->
+        <label for="inputCEP" class="sr-only">CEP</label>
+        <input type="text"
+               name="cep"
+               id="inputCEP"
+               placeholder="CEP *only numbers"
+               class="form-control form-control-sm mb-2"
+               [(ngModel)]="deliveryAddress.cep"
+               [ngClass]="{
               'is-valid': cep.valid && (cep.dirty || cep.touched),
               'is-invalid': cep.invalid && (cep.dirty || cep.tpuched)
            }"
-           #cep="ngModel"
-           required
-           maxlength="9"
-           min="9"
-           size="8"
-           mask="00000-000"/>
+               #cep="ngModel"
+               required
+               maxlength="9"
+               min="9"
+               size="8"
+               mask="00000-000"
+               (keyup)="cepKeyUp($event)"
+               [disabled]="activate_spiner" />
 
-    <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)" >
-      <div *ngIf="cep.errors.required">
-        CEP is required
+        <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+          <div *ngIf="cep.errors.required">
+            CEP is required
+          </div>
+          <div *ngIf="cep.errors.cep">
+            CEP is Invalid
+          </div>
+        </div>
       </div>
-      <div *ngIf="cep.errors.cep">
+      <div class="spinnerCEP" *ngIf="activate_spiner">
+        <div class="spinner-border spinner-border-sm text-info spinner"></div>
+      </div>
 
+    </div>
+
+    <div *ngIf="cepSend">
+
+      <div class="row">
+        <div class="col-md-8">
+          <label for="inputPublicPlace" class="sr-only">Street Address</label>
+          <input type="text"
+                 name="publicPlace"
+                 id="inputPublicPlace"
+                 placeholder="Street Address"
+                 class="form-control form-control-sm mb-2 inputStreetAddress"
+                 [(ngModel)]="deliveryAddress.publicPlace"
+                 [ngClass]="{
+              'is-valid': publicPlace.valid && (publicPlace.dirty || publicPlace.touched),
+              'is-invalid': publicPlace.invalid && (publicPlace.dirty || publicPlace.touched)
+           }"
+                 #publicPlace="ngModel"
+                 required
+                 minlength="5"
+                 min="5"
+                 size="100"/>
+
+          <div class="invalid-feedback mb-2" *ngIf="publicPlace.invalid && (publicPlace.dirty || publicPlace.touched)">
+            <div *ngIf="publicPlace.errors.required">
+              Street Address is required
+            </div>
+            <div *ngIf="publicPlace.errors.cep">
+              Street Address is invalid
+            </div>
+            <div *ngIf="publicPlace.errors.minlength">
+              Min. 5 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <label for="inputNumber" class="sr-only">Number</label>
+          <input type="text"
+                 name="number"
+                 id="inputNumber"
+                 placeholder="Number"
+                 class="form-control form-control-sm mb-2 inputNumberSize"
+                 [(ngModel)]="deliveryAddress.number"
+                 [ngClass]="{
+              'is-valid': number.valid && (number.dirty || number.touched),
+              'is-invalid': number.invalid && (number.dirty || number.touched)
+           }"
+                 #number="ngModel"
+                 required
+                 maxlength="9" />
+
+          <div class="invalid-feedback mb-2" *ngIf="number.invalid && (number.dirty || number.touched)">
+            <div *ngIf="number.errors.required">
+              Number required
+            </div>
+            <div *ngIf="number.errors.cep">
+              Number invalid
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
 
 
@@ -35,4 +109,5 @@
 
 
   </form>
+
 </div>

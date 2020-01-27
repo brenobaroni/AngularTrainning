@@ -34,6 +34,11 @@ namespace QuickBuy.Domain.Entities
             {
                 AddWarning("Warning - CEP is empty");
             }
+
+            if (string.IsNullOrEmpty(PublicPlace))
+            {
+                AddWarning("Warning - CEP is empty");
+            }
         }
     }
 }

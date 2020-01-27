@@ -1,2 +1,25 @@
-﻿body {
+body {
+
+
+}
+
+
+.form-signin {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+}
+
+.spinner {
+  width: 28.35px;
+  height: 28.35px;
+}
+
+.inputNumberSize{
+    width: 100%;
+}
+
+.inputStreetAddress{
+    width: 100%;
 }

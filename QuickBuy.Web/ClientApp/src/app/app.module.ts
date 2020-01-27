@@ -23,6 +23,7 @@ import { ShopMakePurshase } from './shop/makePurchase/shop.makePurshase.componen
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { RegisterDeliveryAddressComponent } from './deliveryAddress/register/register.deliveryAddress.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { DeliveryAddressService } from './services/deliveryAddress/deliveryAddress.service';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
@@ -58,7 +59,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
       //{ path: 'app-shop', component: ShopSearchComponent},
     ]),
   ],
-  providers: [UserService, ProductService], //# All Services here.
+  providers: [UserService, ProductService, DeliveryAddressService], //# All Services here.
   bootstrap: [AppComponent],
 })
 export class AppModule { }
