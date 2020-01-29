@@ -12,7 +12,7 @@ namespace QuickBuy.Repository.API
         {
             Correios.AtendeClienteClient correiosApi = new Correios.AtendeClienteClient();
 
-            Correios.consultaCEPResponse consulta = correiosApi.consultaCEPAsync(cep.Replace("-", "")).Result;
+            Correios.consultaCEPResponse consulta = correiosApi.consultaCEPAsync(cep).Result;
 
 
             return consulta;

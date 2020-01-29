@@ -15,6 +15,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   public cepforAPi: number;
   public activate_spiner: boolean;
   public cepSend: boolean;
+  public msgError: string;
 
   constructor(private deliveryAddressService: DeliveryAddressService) {
 
@@ -35,13 +36,30 @@ export class RegisterDeliveryAddressComponent implements OnInit {
       this.deliveryAddressService.getDeliveryAddresFromApiCorreios(this.cepforAPi.toString())
         .subscribe(
           addressFromApi => {
+            //Set Values
             this.deliveryAddress.publicPlace = addressFromApi['value'].end;
+            this.deliveryAddress.province = addressFromApi['value'].uf;
+            this.deliveryAddress.city = addressFromApi['value'].cidade;
+            this.deliveryAddress.neighborhood = addressFromApi['value'].bairro;
+            this.deliveryAddress.cep = event.target.value.replace('-', '');
+            
+
             console.log(this.deliveryAddress.publicPlace);
             this.desactivateLoading();
+            this.msgError = "";
           },
           err => {
-            console.log(err.error);
+            this.msgError = err.error + " Please input you address.";
+            //console.log(err.error);
             this.desactivateLoading();
+
+            //UnSet Values
+            this.deliveryAddress.publicPlace = "";
+            this.deliveryAddress.province = "";
+            this.deliveryAddress.city = "";
+            this.deliveryAddress.neighborhood = "";
+            this.deliveryAddress.cep = event.target.value.replace('-', '');
+
           }
         );
 

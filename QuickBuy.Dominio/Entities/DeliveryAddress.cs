@@ -21,11 +21,15 @@ namespace QuickBuy.Domain.Entities
 
 
         public string PublicPlace { get; set; }
+        public string Annotation { get; set; }
         public int Number { get; set; }
         public string CEP { get; set; }
         public string Complemento { get; set; }
-        public string City { get; set; }
         public string Country { get; set; }
+        public string Province { get; set; }
+
+        public string Neighborhood { get; set; }
+        public string City { get; set; }
 
 
         public override void Validate()
@@ -39,6 +43,31 @@ namespace QuickBuy.Domain.Entities
             {
                 AddWarning("Warning - CEP is empty");
             }
+
+            if (Number <= 0)
+            {
+                AddWarning("Warning - Number is Invalid or Empty");
+            }
+
+
+            if (string.IsNullOrEmpty(City))
+            {
+                AddWarning("Warning - City is empty");
+            }
+
+
+            if (string.IsNullOrEmpty(Province))
+            {
+                AddWarning("Warning - Province is empty");
+            }
+
+            if (string.IsNullOrEmpty(Neighborhood))
+            {
+                AddWarning("Warning - Neighborhood is empty");
+            }
+
+
         }
     }
+
 }

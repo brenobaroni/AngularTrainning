@@ -36,9 +36,16 @@ namespace QuickBuy.Repository.Config
                     .Property(d => d.Country)
                     .IsRequired();
 
-                //builder
-                //    .HasMany(d => d.Orders)
-                //    .WithOne(o => o.DeliveryAddress);
+                builder
+                    .Property(d => d.Annotation);
+
+                builder
+                    .Property(d => d.Province)
+                    .IsRequired();
+
+                builder
+                    .Property(d => d.Neighborhood)
+                    .IsRequired();
 
             }
         }

@@ -5,8 +5,10 @@
 
     <div class="row">
       <div class="col">
+
+
         <!--CEP-->
-        <label for="inputCEP" class="sr-only">CEP</label>
+        <label for="inputCEP" class="sr-only">*CEP</label>
         <input type="text"
                name="cep"
                id="inputCEP"
@@ -26,6 +28,9 @@
                (keyup)="cepKeyUp($event)"
                [disabled]="activate_spiner" />
 
+        <div class="text-danger mb-2" *ngIf="msgError">
+          {{msgError}}
+        </div>
         <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
           <div *ngIf="cep.errors.required">
             CEP is required
@@ -42,10 +47,10 @@
     </div>
 
     <div *ngIf="cepSend">
-
       <div class="row">
+        <!--St Address-->
         <div class="col-md-8">
-          <label for="inputPublicPlace" class="sr-only">Street Address</label>
+          <label for="inputPublicPlace" class="sr-only">*Street Address</label>
           <input type="text"
                  name="publicPlace"
                  id="inputPublicPlace"
@@ -60,13 +65,13 @@
                  required
                  minlength="5"
                  min="5"
-                 size="100"/>
+                 size="100" />
 
           <div class="invalid-feedback mb-2" *ngIf="publicPlace.invalid && (publicPlace.dirty || publicPlace.touched)">
             <div *ngIf="publicPlace.errors.required">
               Street Address is required
             </div>
-            <div *ngIf="publicPlace.errors.cep">
+            <div *ngIf="publicPlace.errors.publicPlace">
               Street Address is invalid
             </div>
             <div *ngIf="publicPlace.errors.minlength">
@@ -75,8 +80,9 @@
           </div>
         </div>
 
+        <!--Number-->
         <div class="col">
-          <label for="inputNumber" class="sr-only">Number</label>
+          <label for="inputNumber" class="sr-only">*Number</label>
           <input type="text"
                  name="number"
                  id="inputNumber"
@@ -95,17 +101,143 @@
             <div *ngIf="number.errors.required">
               Number required
             </div>
-            <div *ngIf="number.errors.cep">
+            <div *ngIf="number.errors.number">
               Number invalid
             </div>
           </div>
         </div>
       </div>
 
+      <div class="row">
+        <!--Annotation-->
+        <div class="col-md-12">
+          <label for="inputPublicPlace" class="sr-only">Apto/Annotation</label>
+          <input type="text"
+                 name="annotation"
+                 id="inputAnnotation"
+                 placeholder="Annotation"
+                 class="form-control form-control-sm mb-2 inputStreetAddress"
+                 [(ngModel)]="deliveryAddress.annotation"
+                 [ngClass]="{
+              'is-valid': annotation.valid && (annotation.dirty || annotation.touched),
+              'is-invalid': annotation.invalid && (annotation.dirty || annotation.touched)
+           }"
+                 #annotation="ngModel"
+                 size="100" />
+
+          <!--<div class="invalid-feedback mb-2" *ngIf="annotation.invalid && (annotation.dirty || annotation.touched)">
+            <div *ngIf="annotation.errors.annotation">
+              annotation is invalid
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="row">
+        <!--Province-->
+        <div class="col-md-3">
+          <label for="inputPublicPlace" class="sr-only">*Province</label>
+          <input type="text"
+                 name="province"
+                 id="inputProvince"
+                 placeholder="City"
+                 class="form-control form-control-sm mb-2"
+                 [(ngModel)]="deliveryAddress.province"
+                 [ngClass]="{
+              'is-valid': province.valid && (province.dirty || province.touched),
+              'is-invalid': province.invalid && (province.dirty || province.touched)
+           }"
+                 #province="ngModel"
+                 required
+                 minlength="2"
+                 min="2"
+                 size="100" />
+
+          <div class="invalid-feedback mb-2" *ngIf="province.invalid && (province.dirty || province.touched)">
+            <div *ngIf="province.errors.required">
+              Province is required
+            </div>
+            <div *ngIf="province.errors.province">
+              Province is invalid
+            </div>
+            <div *ngIf="province.errors.minlength">
+              Min. 2 characters
+            </div>
+          </div>
+        </div>
+
+        <!--City-->
+        <div class="col-md-9">
+          <label for="inputPublicPlace" class="sr-only">*City</label>
+          <input type="text"
+                 name="city"
+                 id="inputCity"
+                 placeholder="City"
+                 class="form-control form-control-sm mb-2"
+                 [(ngModel)]="deliveryAddress.city"
+                 [ngClass]="{
+              'is-valid': city.valid && (city.dirty || city.touched),
+              'is-invalid': city.invalid && (city.dirty || city.touched)
+           }"
+                 #city="ngModel"
+                 required
+                 minlength="5"
+                 min="3"
+                 size="100" />
+
+          <div class="invalid-feedback mb-2" *ngIf="city.invalid && (city.dirty || city.touched)">
+            <div *ngIf="city.errors.required">
+              City is required
+            </div>
+            <div *ngIf="city.errors.city">
+              City is invalid
+            </div>
+            <div *ngIf="city.errors.minlength">
+              Min. 3 characters
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-9">
+          <label for="inputPublicPlace" class="sr-only">*Neighborhood</label>
+          <input type="text"
+                 name="neighborhood"
+                 id="inputNeighborhood"
+                 placeholder="Neighborhood"
+                 class="form-control form-control-sm mb-2"
+                 [(ngModel)]="deliveryAddress.neighborhood"
+                 [ngClass]="{
+              'is-valid': neighborhood.valid && (neighborhood.dirty || neighborhood.touched),
+              'is-invalid': neighborhood.invalid && (neighborhood.dirty || neighborhood.touched)
+           }"
+                 #neighborhood="ngModel"
+                 required
+                 minlength="5"
+                 min="3"
+                 size="100" />
+
+          <div class="invalid-feedback mb-2" *ngIf="neighborhood.invalid && (neighborhood.dirty || neighborhood.touched)">
+            <div *ngIf="neighborhood.errors.required">
+              City is required
+            </div>
+            <div *ngIf="neighborhood.errors.neighborhood">
+              City is invalid
+            </div>
+            <div *ngIf="neighborhood.errors.minlength">
+              Min. 3 characters
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
     </div>
-
-
-
 
 
   </form>
