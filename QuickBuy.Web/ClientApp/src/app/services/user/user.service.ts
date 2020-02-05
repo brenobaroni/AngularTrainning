@@ -46,9 +46,6 @@ export class UserService {
   }
 
   public checkUser(user: User): Observable<User> {
-
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-
     return this.http.post<User>(this.baseURL + "api/user/checkUser", JSON.stringify(user), { headers: this.headers })
   }
 

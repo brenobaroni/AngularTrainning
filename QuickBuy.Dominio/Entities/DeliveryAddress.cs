@@ -11,13 +11,8 @@ namespace QuickBuy.Domain.Entities
 
         //User
         public int UserId { get; set; }
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
 
-
-        //Orders
-        //public int OrderId { get; set; }
-        //public virtual Order Order { get; set; }
-        //public virtual ICollection<Order> Orders { get; set; }
 
 
         public string PublicPlace { get; set; }

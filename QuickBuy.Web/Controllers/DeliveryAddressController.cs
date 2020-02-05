@@ -34,7 +34,7 @@ namespace QuickBuy.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] DeliveryAddress deliveryAddress)
+        public ActionResult Post([FromBody]DeliveryAddress deliveryAddress)
         {
             try
             {

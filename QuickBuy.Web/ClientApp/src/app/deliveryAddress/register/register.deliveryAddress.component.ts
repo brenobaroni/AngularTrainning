@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core"
 import { DeliveryAddress } from "../../model/deliveryAddress"
 import { faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import { DeliveryAddressService } from "../../services/deliveryAddress/deliveryAddress.service";
+import { UserService } from "../../services/user/user.service";
+import { User } from "../../model/user";
 
 @Component({
   selector: "register-deliveryAddress",
@@ -12,20 +14,25 @@ import { DeliveryAddressService } from "../../services/deliveryAddress/deliveryA
 export class RegisterDeliveryAddressComponent implements OnInit {
 
   public deliveryAddress: DeliveryAddress;
+  public user: User;
   public cepforAPi: number;
+  public activate_spinerCep: boolean;
   public activate_spiner: boolean;
   public cepSend: boolean;
   public msgError: string;
 
-  constructor(private deliveryAddressService: DeliveryAddressService) {
+  constructor(private deliveryAddressService: DeliveryAddressService, private userService: UserService) {
 
   }
 
   ngOnInit(): void {
     this.deliveryAddress = new DeliveryAddress();
+    this.user = new User();
+    this.user = JSON.parse(sessionStorage.getItem("user_authenticated"));
+    this.deliveryAddress.userId = this.user.id;
   }
 
-  
+
   //ICONS  
   faShippingFast = faShippingFast;
 
@@ -67,14 +74,38 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   }
 
 
+  public registerDeliveryAddress() {
+    
+    console.log(JSON.stringify(this.deliveryAddress));
+    this.activateLoadingRegister();
+    this.deliveryAddressService.registerDeliveryAddress(this.deliveryAddress).subscribe(
+      deliveryAddress => {
+        console.log("Ok");
+      },
+      err => {
+        console.log("err")
+      }
+    );
+
+  }
+
+
   public activateLoading() {
-    this.activate_spiner = true;
+    this.activate_spinerCep = true;
     this.cepSend = true;
   }
 
   public desactivateLoading() {
-    this.activate_spiner = false;
+    this.activate_spinerCep = false;
     this.cepSend = true;
+  }
+
+  public activateLoadingRegister() {
+    this.activate_spiner = true;
+  }
+
+  public desactivateLoadingRegister() {
+    this.activate_spinerCep = false;
   }
 
 

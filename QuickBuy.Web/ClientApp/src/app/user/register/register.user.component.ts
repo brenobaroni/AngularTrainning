@@ -35,6 +35,8 @@ export class RegisterUserComponent implements OnInit {
     }
     await delay(1500)
 
+    console.log(JSON.stringify(this.user))
+
     this.userService.registerUser(this.user).subscribe(
       userjson => {
         this.userRegistred = true;

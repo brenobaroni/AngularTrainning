@@ -47,9 +47,9 @@ namespace QuickBuy.Repository.Config
                     .WithOne(p => p.User);
 
                 //#DeliveryAddress
-                builder
-                    .HasMany(u => u.DeliveryAddresses)
-                    .WithOne(d => d.User);
+                //builder
+                //    .HasMany(u => u.DeliveryAddresses)
+                //    .WithOne(d => d.User);
 
             }
         }

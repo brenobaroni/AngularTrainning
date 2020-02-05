@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="spinnerCEP" *ngIf="activate_spiner">
+      <div class="spinnerCEP" *ngIf="activate_spinerCep">
         <div class="spinner-border spinner-border-sm text-info spinner"></div>
       </div>
 
@@ -83,7 +83,7 @@
         <!--Number-->
         <div class="col">
           <label for="inputNumber" class="sr-only">*Number</label>
-          <input type="text"
+          <input type="number"
                  name="number"
                  id="inputNumber"
                  placeholder="Number"
@@ -126,10 +126,10 @@
                  size="100" />
 
           <!--<div class="invalid-feedback mb-2" *ngIf="annotation.invalid && (annotation.dirty || annotation.touched)">
-            <div *ngIf="annotation.errors.annotation">
-              annotation is invalid
-            </div>
-          </div>-->
+        <div *ngIf="annotation.errors.annotation">
+          annotation is invalid
+        </div>
+      </div>-->
         </div>
       </div>
 
@@ -234,6 +234,18 @@
           </div>
         </div>
 
+      </div>
+
+      <!--Button-->
+      <div class="row">
+        <button class="col-auto mr-auto btn btn-danger mb-2 ml-3" [disabled]="activate_Spiner" [routerLink]='["/login"]'>
+          Back
+        </button>
+
+        <button class="col-auto btn btn-primary mb-2 mr-3" type="submit" (click)="registerDeliveryAddress()" [disabled]="activate_Spiner">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="activate_Spiner"></span>
+          Register
+        </button>
       </div>
 
 

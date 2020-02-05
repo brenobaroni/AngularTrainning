@@ -32,6 +32,12 @@ export class DeliveryAddressService implements OnInit {
     return this.http.get<string>(this._baseUrl + 'api/DeliveryAddress/GetByCep?cep=' + cep.replace('-',''));
   }
 
+  public registerDeliveryAddress(deliveryAddress: DeliveryAddress): Observable<DeliveryAddress> {
+    const header = new HttpHeaders()
+      .set('Content-type', 'application/json');
+    return this.http.post<DeliveryAddress>(this._baseUrl + "api/DeliveryAddress", JSON.stringify(deliveryAddress), { headers: header });
+  }
+
 
 
 

@@ -3,7 +3,7 @@ export class DeliveryAddress {
   public userId: number;
   public publicPlace: string;
   public number: number;
-  public cep: number;
+  public cep: string;
   public Complemento: string;
   public annotation: string;
   public province: string;

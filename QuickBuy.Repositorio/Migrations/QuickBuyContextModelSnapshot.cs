@@ -224,7 +224,7 @@ namespace QuickBuy.Repository.Migrations
 
             modelBuilder.Entity("QuickBuy.Domain.Entities.DeliveryAddress", b =>
                 {
-                    b.HasOne("QuickBuy.Domain.Entities.User", "User")
+                    b.HasOne("QuickBuy.Domain.Entities.User", null)
                         .WithMany("DeliveryAddresses")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
