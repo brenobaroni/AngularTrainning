@@ -11,8 +11,5 @@ namespace QuickBuy.Domain.Contracts
         IEnumerable<TEntity> GetAll();
         void Update(TEntity entity);
         void Remove(TEntity entity);
-
-
-
     }
 }

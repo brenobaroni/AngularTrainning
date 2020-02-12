@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuickBuy.Repository.Context;
 
 namespace QuickBuy.Repository.Migrations
 {
     [DbContext(typeof(QuickBuyContext))]
-    partial class QuickBuyContextModelSnapshot : ModelSnapshot
+    [Migration("20200206012227_country")]
+    partial class country
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,8 +32,8 @@ namespace QuickBuy.Repository.Migrations
 
                     b.Property<string>("CountryName")
                         .IsRequired()
-                        .HasColumnType("varchar(60) CHARACTER SET utf8mb4")
-                        .HasMaxLength(60);
+                        .HasColumnType("varchar(30) CHARACTER SET utf8mb4")
+                        .HasMaxLength(30);
 
                     b.HasKey("Id");
 

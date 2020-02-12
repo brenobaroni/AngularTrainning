@@ -51,7 +51,6 @@ export class RegisterDeliveryAddressComponent implements OnInit {
             this.deliveryAddress.cep = event.target.value.replace('-', '');
             
 
-            console.log(this.deliveryAddress.publicPlace);
             this.desactivateLoading();
             this.msgError = "";
           },
@@ -80,7 +79,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
     this.activateLoadingRegister();
     this.deliveryAddressService.registerDeliveryAddress(this.deliveryAddress).subscribe(
       deliveryAddress => {
-        console.log("Ok");
+        console.log("Success Register!");
       },
       err => {
         console.log("err")

@@ -1,4 +1,5 @@
-﻿using QuickBuy.Domain.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using QuickBuy.Domain.Contracts;
 using QuickBuy.Repository.Context;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace QuickBuy.Repository.Repository
 
         public IEnumerable<TEntity> GetAll()
         {
-            return QuickBuyContext.Set<TEntity>().ToList();
+            return QuickBuyContext.Set<TEntity>().AsNoTracking().ToList();
         }
 
         public TEntity GetById(int id)

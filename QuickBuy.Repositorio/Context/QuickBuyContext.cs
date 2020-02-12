@@ -19,6 +19,8 @@ namespace QuickBuy.Repository.Context
         public DbSet<OrderItem> OrderItens { get; set; }
         public DbSet<PaymentMetod> PaymentMetod { get; set; }
 
+        public DbSet<Country> Country { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +35,7 @@ namespace QuickBuy.Repository.Context
                 modelBuilder.ApplyConfiguration(new PaymentMetodConfiguration());
                 modelBuilder.ApplyConfiguration(new ProductConfiguration());
                 modelBuilder.ApplyConfiguration(new DeliveryAddressConfiguration());
+                modelBuilder.ApplyConfiguration(new CountryConfiguration());
 
                 modelBuilder.Entity<PaymentMetod>().HasData(
                     new PaymentMetod() { 

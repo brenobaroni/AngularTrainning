@@ -30,13 +30,16 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\authorization\route.guard.ts" />
+    <None Remove="ClientApp\src\app\comboBox\comboBox.component.ts" />
     <None Remove="ClientApp\src\app\deliveryAddress\register\register.deliveryAddress.component.ts" />
+    <None Remove="ClientApp\src\app\model\country.ts" />
     <None Remove="ClientApp\src\app\model\deliveryAddress.ts" />
     <None Remove="ClientApp\src\app\model\order.ts" />
     <None Remove="ClientApp\src\app\model\orderItem.ts" />
     <None Remove="ClientApp\src\app\model\user.ts" />
     <None Remove="ClientApp\src\app\product\product.component.ts" />
     <None Remove="ClientApp\src\app\product\search\search.product.component.ts" />
+    <None Remove="ClientApp\src\app\services\country\country.service.ts" />
     <None Remove="ClientApp\src\app\services\deliveryAddress\deliveryAddress.service.ts" />
     <None Remove="ClientApp\src\app\services\product\product.service.ts" />
     <None Remove="ClientApp\src\app\services\user\user.service.ts" />
@@ -54,13 +57,16 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\authorization\route.guard.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\comboBox\comboBox.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\deliveryAddress\register\register.deliveryAddress.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\model\country.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\deliveryAddress.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\order.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\orderItem.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\model\user.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\product.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\search\search.product.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\country\country.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\deliveryAddress\deliveryAddress.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\product\product.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\user\user.service.ts" />

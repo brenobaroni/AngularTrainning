@@ -11,7 +11,7 @@ namespace QuickBuy.Repository.Config
         {
             if(builder != null)
             {
-                //#Builder Pardão Fluent
+                //#Builder Padrão Fluent
 
                 //#Id
                 builder
