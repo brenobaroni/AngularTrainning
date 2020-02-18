@@ -7,7 +7,7 @@
          (keyup)="onKeyPress($event)"
          (blur)="toggleListDisplay(0)"
          (focus)="toggleListDisplay(1)"
-         [ngClass]="{'error': showError}">
+         [ngClass]="{'error': showError}"/>
 
   <i *ngIf="showError" class="error-text">Invalid Selection.</i>
   <div class="combobox-options" *ngIf="!listHidden">

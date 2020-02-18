@@ -6,6 +6,7 @@
     <div class="row">
       <div class="col">
 
+        <app-combo-box [list]="listaParaRetorno"></app-combo-box>
 
         <!--CEP-->
         <label for="inputCEP" class="sr-only">*CEP</label>
@@ -126,10 +127,10 @@
                  size="100" />
 
           <!--<div class="invalid-feedback mb-2" *ngIf="annotation.invalid && (annotation.dirty || annotation.touched)">
-        <div *ngIf="annotation.errors.annotation">
-          annotation is invalid
-        </div>
-      </div>-->
+            <div *ngIf="annotation.errors.annotation">
+              annotation is invalid
+            </div>
+          </div>-->
         </div>
       </div>
 
@@ -235,6 +236,8 @@
         </div>
 
       </div>
+
+
 
       <!--Button-->
       <div class="row">

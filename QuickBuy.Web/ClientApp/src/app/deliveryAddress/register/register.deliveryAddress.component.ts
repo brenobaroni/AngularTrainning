@@ -1,9 +1,12 @@
-import { Component, OnInit } from "@angular/core"
+import { Component, OnInit, Input } from "@angular/core"
 import { DeliveryAddress } from "../../model/deliveryAddress"
 import { faShippingFast } from '@fortawesome/free-solid-svg-icons'
 import { DeliveryAddressService } from "../../services/deliveryAddress/deliveryAddress.service";
 import { UserService } from "../../services/user/user.service";
 import { User } from "../../model/user";
+import { CountryService } from "../../services/country/country.service";
+import { Country } from "../../model/country";
+import { from } from "rxjs/internal/observable/from";
 
 @Component({
   selector: "register-deliveryAddress",
@@ -20,8 +23,14 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   public activate_spiner: boolean;
   public cepSend: boolean;
   public msgError: string;
+  public countryList: Country[];
+  public listaParaRetorno: string[];
 
-  constructor(private deliveryAddressService: DeliveryAddressService, private userService: UserService) {
+  constructor(
+    private deliveryAddressService: DeliveryAddressService,
+    private userService: UserService,
+    private countryService: CountryService
+  ) {
 
   }
 
@@ -30,11 +39,27 @@ export class RegisterDeliveryAddressComponent implements OnInit {
     this.user = new User();
     this.user = JSON.parse(sessionStorage.getItem("user_authenticated"));
     this.deliveryAddress.userId = this.user.id;
+    this.getListcountry();
   }
 
 
   //ICONS  
   faShippingFast = faShippingFast;
+
+    getListcountry(): void {
+      this.countryService.getAll().subscribe(
+        list => {
+          this.countryList = list;
+          this.listaParaRetorno = list.map(u => u.countryName);
+          console.log(this.listaParaRetorno);
+          console.log(list);
+        },err => {
+          this.msgError = err.error;
+          console.log(err.error);
+        }
+
+      )
+    }
 
   cepKeyUp(event: any) {
     if (event.target.value.length >= 9) {
@@ -49,7 +74,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
             this.deliveryAddress.city = addressFromApi['value'].cidade;
             this.deliveryAddress.neighborhood = addressFromApi['value'].bairro;
             this.deliveryAddress.cep = event.target.value.replace('-', '');
-            
+
 
             this.desactivateLoading();
             this.msgError = "";
@@ -74,7 +99,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
 
 
   public registerDeliveryAddress() {
-    
+
     console.log(JSON.stringify(this.deliveryAddress));
     this.activateLoadingRegister();
     this.deliveryAddressService.registerDeliveryAddress(this.deliveryAddress).subscribe(

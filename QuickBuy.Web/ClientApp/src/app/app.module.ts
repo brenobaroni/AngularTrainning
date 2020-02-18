@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { RegisterDeliveryAddressComponent } from './deliveryAddress/register/register.deliveryAddress.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { DeliveryAddressService } from './services/deliveryAddress/deliveryAddress.service';
+import { ComboBoxComponent } from './comboBox/comboBox.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
@@ -39,6 +40,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     ShopSearchComponent,
     ShopProductComponent,
     ShopMakePurshase,
+    ComboBoxComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,10 +58,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
       { path: 'search-product', component: SearchProductComponent, canActivate: [RouteGuard] },
       { path: 'shop-product', component: ShopProductComponent },
       { path: 'shop-makePurshase', component: ShopMakePurshase, canActivate: [RouteGuard] },
+      { path: 'app-combo-box', component: ComboBoxComponent},
       //{ path: 'app-shop', component: ShopSearchComponent},
     ]),
   ],
   providers: [UserService, ProductService, DeliveryAddressService], //# All Services here.
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
