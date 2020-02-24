@@ -26,9 +26,6 @@ namespace QuickBuy.Repository.Config
                     .IsRequired();
 
                 builder
-                    .Property(d => d.Complemento);
-
-                builder
                     .Property(d => d.City)
                     .IsRequired();
 

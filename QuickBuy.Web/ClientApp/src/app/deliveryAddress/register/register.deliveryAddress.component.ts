@@ -24,6 +24,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   public cepSend: boolean;
   public msgError: string;
   public countryList: Country[];
+  public selectedCountry: Country;
   public listaParaRetorno: string[];
 
   constructor(
@@ -51,8 +52,6 @@ export class RegisterDeliveryAddressComponent implements OnInit {
         list => {
           this.countryList = list;
           this.listaParaRetorno = list.map(u => u.countryName);
-          console.log(this.listaParaRetorno);
-          console.log(list);
         },err => {
           this.msgError = err.error;
           console.log(err.error);
@@ -111,6 +110,16 @@ export class RegisterDeliveryAddressComponent implements OnInit {
       }
     );
 
+  }
+
+  reciverFeedback(response) {
+
+    console.log('Foi emitido o evento e chegou no pai >>>> ', response);
+    this.selectedCountry = this.countryList.filter(function (e) {
+      return e.countryName === response.country;
+    })[0];
+    console.log(this.selectedCountry.countryCode);
+    this.deliveryAddress.country = this.selectedCountry.countryCode;
   }
 
 

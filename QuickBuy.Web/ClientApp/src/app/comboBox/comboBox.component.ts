@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-combo-box',
@@ -11,6 +11,8 @@ export class ComboBoxComponent implements OnInit {
   @Input() list: string[];
   //two way binding for input text
   inputItem = '';
+
+  @Output() itemSelected = new EventEmitter();
 
   //enable or disable visibility of dropdown
   listHidden = true;
@@ -38,6 +40,10 @@ export class ComboBoxComponent implements OnInit {
     this.inputItem = this.filteredList[ind];
     this.listHidden = true;
     this.selectedIndex = ind;
+    this.feedback(this.filteredList[ind]);
+  }
+  feedback(item) {
+    console.log('Resposta para o component pai', this.itemSelected.emit({ "country": item }));
   }
   // navigate through the list of items
   onKeyPress(event) {

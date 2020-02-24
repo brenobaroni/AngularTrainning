@@ -1,17 +1,21 @@
 ﻿using QuickBuy.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace QuickBuy.Domain.Entities
 {
     public class DeliveryAddress : Entitie
     {
+        [Key]
         public int Id { get; set; }
 
         //User
+        [ForeignKey("User")]
         public int UserId { get; set; }
-        //public virtual User User { get; set; }
+        public virtual User User { get; set; }
 
 
 
@@ -19,7 +23,7 @@ namespace QuickBuy.Domain.Entities
         public string Annotation { get; set; }
         public int Number { get; set; }
         public string CEP { get; set; }
-        public string Complemento { get; set; }
+        //public string Complemento { get; set; }
         public string Country { get; set; }
         public string Province { get; set; }
 

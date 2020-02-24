@@ -6,7 +6,9 @@
     <div class="row">
       <div class="col">
 
-        <app-combo-box [list]="listaParaRetorno"></app-combo-box>
+        <div class="mb-2">
+          <app-combo-box  [list]="listaParaRetorno" (itemSelected)="reciverFeedback($event)"></app-combo-box>
+        </div>
 
         <!--CEP-->
         <label for="inputCEP" class="sr-only">*CEP</label>
