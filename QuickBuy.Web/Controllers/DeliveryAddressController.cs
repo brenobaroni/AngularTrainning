@@ -38,6 +38,11 @@ namespace QuickBuy.Web.Controllers
         {
             try
             {
+                //Validation for DeliveryAdress
+                deliveryAddress.Validate();
+                if (!deliveryAddress.IsValid)
+                    return BadRequest(deliveryAddress.GetMessageValidation());
+
                 _deliveryAddressRepository.Add(deliveryAddress);
             }
             catch (Exception ex)

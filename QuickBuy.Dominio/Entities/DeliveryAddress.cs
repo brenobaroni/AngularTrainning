@@ -40,7 +40,7 @@ namespace QuickBuy.Domain.Entities
 
             if (string.IsNullOrEmpty(PublicPlace))
             {
-                AddWarning("Warning - CEP is empty");
+                AddWarning("Warning - Street Address is empty");
             }
 
             if (Number <= 0)
@@ -63,6 +63,11 @@ namespace QuickBuy.Domain.Entities
             if (string.IsNullOrEmpty(Neighborhood))
             {
                 AddWarning("Warning - Neighborhood is empty");
+            }
+
+            if (string.IsNullOrEmpty(Country))
+            {
+                AddWarning("Warning - Country is empty");
             }
 
 

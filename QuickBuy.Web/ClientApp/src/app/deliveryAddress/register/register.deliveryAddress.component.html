@@ -7,39 +7,41 @@
       <div class="col">
 
         <div class="mb-2">
-          <app-combo-box  [list]="listaParaRetorno" (itemSelected)="reciverFeedback($event)"></app-combo-box>
+          <app-combo-box [list]="listaParaRetorno" (itemSelected)="reciverFeedback($event)"></app-combo-box>
         </div>
 
-        <!--CEP-->
-        <label for="inputCEP" class="sr-only">*CEP</label>
-        <input type="text"
-               name="cep"
-               id="inputCEP"
-               placeholder="CEP *only numbers"
-               class="form-control form-control-sm mb-2"
-               [(ngModel)]="deliveryAddress.cep"
-               [ngClass]="{
+        <div *ngIf="countryCboSelected">
+          <!--CEP-->
+          <label for="inputCEP" class="sr-only">*CEP</label>
+          <input type="text"
+                 name="cep"
+                 id="inputCEP"
+                 placeholder="CEP *only numbers"
+                 class="form-control form-control-sm mb-2"
+                 [(ngModel)]="deliveryAddress.cep"
+                 [ngClass]="{
               'is-valid': cep.valid && (cep.dirty || cep.touched),
               'is-invalid': cep.invalid && (cep.dirty || cep.tpuched)
            }"
-               #cep="ngModel"
-               required
-               maxlength="9"
-               min="9"
-               size="8"
-               mask="00000-000"
-               (keyup)="cepKeyUp($event)"
-               [disabled]="activate_spiner" />
+                 #cep="ngModel"
+                 required
+                 maxlength="9"
+                 min="9"
+                 size="8"
+                 mask="00000-000"
+                 (keyup)="cepKeyUp($event)"
+                 [disabled]="activate_spiner" />
 
-        <div class="text-danger mb-2" *ngIf="msgError">
-          {{msgError}}
-        </div>
-        <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
-          <div *ngIf="cep.errors.required">
-            CEP is required
+          <div class="text-danger mb-2" *ngIf="msgError">
+            {{msgError}}
           </div>
-          <div *ngIf="cep.errors.cep">
-            CEP is Invalid
+          <div class="invalid-feedback mb-2" *ngIf="cep.invalid && (cep.dirty || cep.touched)">
+            <div *ngIf="cep.errors.required">
+              CEP is required
+            </div>
+            <div *ngIf="cep.errors.cep">
+              CEP is Invalid
+            </div>
           </div>
         </div>
       </div>
@@ -256,6 +258,13 @@
 
     </div>
 
+    <div class="alert alert-danger mb-2 mt-2" *ngIf="registerError">
+      {{registerError}}
+    </div>
+
+    <div class="alert alert-success mb-2  mt-2" *ngIf="registerSuccsess">
+      {{registerSuccsess}}
+    </div>
 
   </form>
 

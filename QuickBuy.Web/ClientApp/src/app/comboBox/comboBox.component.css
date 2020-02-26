@@ -3,11 +3,11 @@
 }
 
 .combobox-input {
-  width: 330px;
+  width: 100%;
   border: none;
-  padding: 10px;
-  font-size: 18px;
-  border-bottom: 2px solid rgb(165, 112, 112);
+  /*padding: 10px;*/
+  font-size: 12px;
+  /*border-bottom: 2px solid rgb(165, 112, 112);*/
 }
 
   .combobox-input:focus {
@@ -16,7 +16,7 @@
 
 .combobox-options {
   position: absolute;
-  text-align: center;
+  text-align: start;
   background-color: white;
   width: 350px;
   max-height: 200px;
@@ -27,12 +27,12 @@
 
 .selected {
   color: cornsilk;
-  background-color: rgb(165, 112, 112);
+  background-color: rgb(128, 128, 128);
 }
 
 list-item {
   display: block;
-  font-size: 18px;
+  font-size: 12px;
   padding: 10px;
 }
 
@@ -42,7 +42,7 @@ list-item {
   }
 
 .error-text {
-  color: rgb(165, 112, 112);
+  color: rgb(144, 144, 144);
 }
 
 .error {

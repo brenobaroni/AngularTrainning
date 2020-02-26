@@ -1,4 +1,4 @@
-<div class="combobox">
+<div class="form-control form-control-sm combobox">
   <input type="text"
          placeholder="Select Country..."
          class="combobox-input"
@@ -9,7 +9,7 @@
          (focus)="toggleListDisplay(1)"
          [ngClass]="{'error': showError}"/>
 
-  <i *ngIf="showError" class="error-text">Invalid Selection.</i>
+  <div *ngIf="showError" class="text-danger">Invalid Selection.</div>
   <div class="combobox-options" *ngIf="!listHidden">
     <list-item *ngFor="let item of filteredList;let i = index"
                [ngClass]="{'selected': i===selectedIndex}"

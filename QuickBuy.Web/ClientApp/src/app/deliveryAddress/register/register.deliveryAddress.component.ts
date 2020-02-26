@@ -22,7 +22,12 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   public activate_spinerCep: boolean;
   public activate_spiner: boolean;
   public cepSend: boolean;
+  public countryCboSelected: boolean;
+
   public msgError: string;
+  public registerError: string;
+  public registerSuccsess: string;
+
   public countryList: Country[];
   public selectedCountry: Country;
   public listaParaRetorno: string[];
@@ -97,16 +102,20 @@ export class RegisterDeliveryAddressComponent implements OnInit {
   }
 
 
-  public registerDeliveryAddress() {
-
+  public async registerDeliveryAddress() {
     console.log(JSON.stringify(this.deliveryAddress));
     this.activateLoadingRegister();
+    function delay(ms: number) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    await delay(1500)
+
     this.deliveryAddressService.registerDeliveryAddress(this.deliveryAddress).subscribe(
       deliveryAddress => {
-        console.log("Success Register!");
+        this.registerSuccsess = "Register Succesful."
       },
       err => {
-        console.log("err")
+        this.registerError = err.error;
       }
     );
 
@@ -120,6 +129,7 @@ export class RegisterDeliveryAddressComponent implements OnInit {
     })[0];
     console.log(this.selectedCountry.countryCode);
     this.deliveryAddress.country = this.selectedCountry.countryCode;
+    this.countryCboSelected = true;
   }
 
 

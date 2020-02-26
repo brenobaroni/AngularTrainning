@@ -65,8 +65,6 @@ namespace QuickBuy.Web.Controllers
             try
             {
                 User userRepository = _userRepository.Get(user.Email, user.Password);
-
-
                 if(userRepository != null)
                     return Ok(userRepository);
 
